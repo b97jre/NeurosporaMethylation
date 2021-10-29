@@ -1,0 +1,15 @@
+Status	bamfiles/L10_sa/L10aaP1_merged_vs.10708_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_sa/L10aaP1-sex_merged_vs.10708_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_sa/L10aaP2_merged_vs.10708_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_sa/L10aaP2-sex_merged_vs.10708_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_sa/L10aaP3_merged_vs.10708_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_sa/L10aaP3-sex_merged_vs.10708_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_sa/L10aP1_merged_vs.10708_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_sa/L10aP1-sex_merged_vs.10708_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_sa/L10aP2_merged_vs.10708_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_sa/L10aP2-sex_merged_vs.10708_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_sa/L10aP3_merged_vs.10708_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_sa/L10aP3-sex_merged_vs.10708_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam
+Assigned	10874952	8803501	8162691	10104458	10912158	10972383	12944763	10259725	6464453	12452424	10289250	12507433
+Unassigned_Unmapped	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Read_Type	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Singleton	27129	73846	111239	23871	84924	32905	48718	36647	14729	35667	25214	37014
+Unassigned_MappingQuality	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Chimera	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_FragmentLength	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Duplicate	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_MultiMapping	137244	161871	96992	194063	132702	207171	19631	17377	9798	23092	15563	20726
+Unassigned_Secondary	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_NonSplit	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_NoFeatures	2372748	2840744	1632252	3340378	2303526	3554469	3028646	3572021	1416804	4543361	2325075	4279951
+Unassigned_Overlapping_Length	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Ambiguity	2478	3486	2699	3509	2919	4005	2848	4177	1646	5104	2587	5204

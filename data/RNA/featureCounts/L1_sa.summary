@@ -1,0 +1,15 @@
+Status	bamfiles/L1_sa/L1aaP1_merged2017_vs.9034_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L1_sa/L1aaP1-sex_154_vs.9034_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L1_sa/L1aaP2_merged2017_vs.9034_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L1_sa/L1aaP2-sex_merged2017_vs.9034_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L1_sa/L1aaP3_merged2017_vs.9034_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L1_sa/L1aaP3-sex_154_vs.9034_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L1_sa/L1aP1_merged2017_vs.9034_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L1_sa/L1aP1-sex_154_vs.9034_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L1_sa/L1aP2_154_vs.9034_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L1_sa/L1aP2-sex_154_vs.9034_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L1_sa/L1aP3_154_vs.9034_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L1_sa/L1aP3-sex_154_vs.9034_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam
+Assigned	6233646	8351845	7865630	12828557	6589112	9336252	7209286	9499734	7445490	5655380	7899507	8065786
+Unassigned_Unmapped	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Read_Type	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Singleton	81809	26029	159556	640876	71341	17177	618970	22563	27032	167548	34155	19083
+Unassigned_MappingQuality	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Chimera	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_FragmentLength	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Duplicate	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_MultiMapping	3865028	475384	3472935	618007	3930192	315293	1689597	246376	556525	131652	541220	218358
+Unassigned_Secondary	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_NonSplit	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_NoFeatures	1494601	2826788	1776659	4672347	1524984	3105454	1673565	3880886	1826846	2072421	1872452	3067481
+Unassigned_Overlapping_Length	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Ambiguity	2551	4144	3043	7399	2526	4678	3628	4310	3045	2873	3283	3654

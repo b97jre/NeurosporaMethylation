@@ -1,0 +1,15 @@
+Status	bamfiles/L10_BA/L10aaP1_merged_vs.10707_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_BA/L10aaP1-sex_merged_vs.10707_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_BA/L10aaP2_merged_vs.10707_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_BA/L10aaP2-sex_merged_vs.10707_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_BA/L10aaP3_merged_vs.10707_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_BA/L10aaP3-sex_merged_vs.10707_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_BA/L10aP1_merged_vs.10707_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_BA/L10aP1-sex_merged_vs.10707_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_BA/L10aP2_merged_vs.10707_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_BA/L10aP2-sex_merged_vs.10707_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_BA/L10aP3_merged_vs.10707_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L10_BA/L10aP3-sex_merged_vs.10707_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam
+Assigned	10820250	8849892	8132046	10130254	10864869	11009187	12917444	10269077	6458616	12425659	10262904	12478825
+Unassigned_Unmapped	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Read_Type	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Singleton	29717	82515	121668	26539	93471	36628	45185	33241	13709	32491	23511	33166
+Unassigned_MappingQuality	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Chimera	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_FragmentLength	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Duplicate	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_MultiMapping	18089	15431	14624	18467	18267	19804	223619	193814	104332	244036	177823	232668
+Unassigned_Secondary	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_NonSplit	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_NoFeatures	2404462	2857246	1650294	3395315	2347436	3588571	3027201	3473268	1415134	4435481	2325723	4168137
+Unassigned_Overlapping_Length	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Ambiguity	1932	2832	2033	3019	2176	3330	2704	3560	1369	4466	2335	4661

@@ -1,0 +1,15 @@
+Status	bamfiles/L6_sa/L6aaP1_merged_vs.2509_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L6_sa/L6aaP1-sex_merged_vs.2509_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L6_sa/L6aaP2_merged_vs.2509_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L6_sa/L6aaP2-sex_merged_vs.2509_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L6_sa/L6aaP3_merged_vs.2509_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L6_sa/L6aaP3-sex_merged_vs.2509_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L6_sa/L6aP1_merged_vs.2509_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L6_sa/L6aP1-sex_merged_vs.2509_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L6_sa/L6aP2_merged2017_vs.2509_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L6_sa/L6aP2-sex_merged_vs.2509_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L6_sa/L6aP3_merged_vs.2509_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/L6_sa/L6aP3-sex_merged_vs.2509_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam
+Assigned	7681972	17576644	8534155	15420773	8709669	15169342	6247598	16520490	5562696	14351551	16527320	13937717
+Unassigned_Unmapped	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Read_Type	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Singleton	144095	49798	45167	201875	39869	386658	161073	46398	199344	18659	188687	33329
+Unassigned_MappingQuality	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Chimera	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_FragmentLength	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Duplicate	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_MultiMapping	1439942	297664	2087333	247208	2572762	254500	2405030	84749	3194996	81659	289665	68764
+Unassigned_Secondary	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_NonSplit	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_NoFeatures	1299215	2634534	1568122	2149672	1761405	2080979	1555501	2690862	1770824	2373351	1965434	2205732
+Unassigned_Overlapping_Length	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Ambiguity	3347	9481	3262	8760	3475	9189	2789	10485	2412	8552	6707	8805

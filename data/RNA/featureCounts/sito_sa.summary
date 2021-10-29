@@ -1,0 +1,15 @@
+Status	bamfiles/sito_sa/Sito-aaP1_163_vs.5941_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_sa/Sito-aaP1-sex_163_vs.5941_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_sa/Sito-aaP2_163_vs.5941_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_sa/Sito-aaP2-sex_163_vs.5941_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_sa/Sito-aaP3_163_vs.5941_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_sa/Sito-aaP3-sex_163_vs.5941_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_sa/Sito-aP1_163_vs.5941_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_sa/Sito-aP1-sex_163_vs.5941_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_sa/Sito-aP2_163_vs.5941_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_sa/Sito-aP2-sex_163_vs.5941_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_sa/Sito-aP3_163_vs.5941_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_sa/Sito-aP3-sex_163_vs.5941_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam
+Assigned	4223766	11636646	6988894	9048009	7233897	8291389	8020371	8406110	7515699	8161845	7971764	11922742
+Unassigned_Unmapped	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Read_Type	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Singleton	140979	26120	12436	15761	14079	16110	14696	18789	12500	14818	16338	23882
+Unassigned_MappingQuality	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Chimera	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_FragmentLength	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Duplicate	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_MultiMapping	288383	209034	217509	197222	279950	148199	196357	73878	184490	72251	226496	150777
+Unassigned_Secondary	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_NonSplit	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_NoFeatures	1005748	3110978	1410272	2575490	1638947	2466659	1727736	2619463	1461590	2375238	1577123	3761144
+Unassigned_Overlapping_Length	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Ambiguity	611	2088	823	1528	967	1415	973	1606	841	1478	964	2257

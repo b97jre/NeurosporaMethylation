@@ -1,0 +1,15 @@
+Status	bamfiles/sito_BA/Sito-aaP1_163_vs.5940_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_BA/Sito-aaP1-sex_163_vs.5940_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_BA/Sito-aaP2_163_vs.5940_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_BA/Sito-aaP2-sex_163_vs.5940_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_BA/Sito-aaP3_163_vs.5940_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_BA/Sito-aaP3-sex_163_vs.5940_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_BA/Sito-aP1_163_vs.5940_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_BA/Sito-aP1-sex_163_vs.5940_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_BA/Sito-aP2_163_vs.5940_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_BA/Sito-aP2-sex_163_vs.5940_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_BA/Sito-aP3_163_vs.5940_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/sito_BA/Sito-aP3-sex_163_vs.5940_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam
+Assigned	4228214	11644806	6996174	9052690	7244599	8291739	8023943	8412164	7519386	8168857	7972789	11933999
+Unassigned_Unmapped	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Read_Type	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Singleton	225330	41392	33083	27327	43836	25696	32860	23054	30990	18797	41092	31687
+Unassigned_MappingQuality	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Chimera	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_FragmentLength	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Duplicate	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_MultiMapping	3408829	1492039	2573395	1646663	3197991	1121988	2636955	642219	2516307	714178	2728489	1314610
+Unassigned_Secondary	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_NonSplit	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_NoFeatures	773266	2991885	1230392	2451375	1414212	2376864	1570562	2584042	1309123	2337267	1400478	3685548
+Unassigned_Overlapping_Length	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Ambiguity	524	1811	666	1305	765	1213	725	1444	653	1363	729	1972

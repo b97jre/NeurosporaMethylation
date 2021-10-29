@@ -1,0 +1,15 @@
+Status	bamfiles/crassa_BA/crassa-aaP1_163_vs.2489_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/crassa_BA/crassa-aaP1-sex_163_vs.2489_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/crassa_BA/crassa-aaP2_163_vs.2489_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/crassa_BA/crassa-aaP2-sex_163_vs.2489_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/crassa_BA/crassa-aaP3_163_vs.2489_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/crassa_BA/crassa-aaP3-sex_163_vs.2489_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/crassa_BA/crassa-aP1_163_vs.2489_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/crassa_BA/crassa-aP1-sex_163_vs.2489_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/crassa_BA/crassa-aP2_163_vs.2489_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/crassa_BA/crassa-aP2-sex_163_vs.2489_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/crassa_BA/crassa-aP3_163_vs.2489_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam	bamfiles/crassa_BA/crassa-ap3-sex_163_vs.2489_ribofiltered+trimmed_Aligned.sortedByCoord.out.bam
+Assigned	9337903	7844401	8174682	9522347	8869311	9245050	7695456	9785646	8485460	6107684	12210523	12673790
+Unassigned_Unmapped	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Read_Type	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Singleton	14349	12566	16589	26273	17822	20068	178648	20820	175116	14583	24437	23526
+Unassigned_MappingQuality	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Chimera	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_FragmentLength	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Duplicate	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_MultiMapping	93530	49440	148948	81682	62015	99606	31896	90752	54089	115366	109931	87994
+Unassigned_Secondary	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_NonSplit	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_NoFeatures	388218	426544	450195	604601	467024	561017	266366	595423	334580	474329	608901	700778
+Unassigned_Overlapping_Length	0	0	0	0	0	0	0	0	0	0	0	0
+Unassigned_Ambiguity	9992	14828	8217	14807	9034	15411	9328	15281	10923	9463	12918	22787
