@@ -1,0 +1,521 @@
+GOterm	GO-term	sex	both	veg	Chr	type	start	end	dir	gene_id	OrthoID	Namespace	pubMedId	EvidenceCode
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	237549	238578	+	NCU08093	Ntsc3915	biological_process	21354536	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	464411	467155	+	NCU07483	Ntsc3894	biological_process	10669587	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	552868	555385	+	NCU07460	Ntsc3881	biological_process	19788544	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	937786	943577	+	NCU02184	NoOrtho-NCU02184	biological_process	22796096	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	1232083	1237074	+	NCU02114	Ntsc3810	biological_process	21354536	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	1253810	1257287	+	NCU02110	Ntsc3809	biological_process	18567788	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	1312438	1316433	+	NCU02094	NoOrtho-NCU02094	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	1931911	1936267	+	NCU01940	Ntsc3701	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	2526032	2529818	-	NCU02498	Ntsc3611	biological_process	21354536	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	3209510	3214860	-	NCU02689	Ntsc1295	biological_process	18716060	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	3522966	3526584	-	NCU09377	NoOrtho-NCU09377	biological_process	9987122	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	4117346	4121351	-	NCU09808	NoOrtho-NCU09808	biological_process	18227279	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	4463727	4466476	+	NCU03076	Ntsc3398	biological_process	21354536	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	4609229	4614172	+	NCU03115	NoOrtho-NCU03115	biological_process	19281855	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	4888873	4895320	-	NCU03200	NoOrtho-NCU03200	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	5201256	5205099	+	NCU03292	Ntsc3300	biological_process	22983986	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	5281468	5284082	-	NCU03314	NoOrtho-NCU03314	biological_process	19788544	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	5299265	5301649	-	NCU03320	Ntsc7833	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	5416503	5419355	+	NCU09123	NoOrtho-NCU09123	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	5815007	5820220	+	NCU09202	NoOrtho-NCU09202	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	5826154	5830642	+	NCU09205	Ntsc3203	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	6094075	6098544	-	NCU07392	Ntsc3181	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	6158890	6166641	+	NCU07378	Ntsc3156	biological_process	21354536	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	6624343	6627731	+	NCU00945	Ntsc3084	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	6650854	6657821	-	NCU00939	Ntsc3069	biological_process	22058142	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	6708566	6710526	+	NCU00924	Ntsc3066	biological_process	19927742	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	6752091	6757105	-	NCU00914	NoOrtho-NCU00914	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	6878944	6881270	+	NCU00881	NoOrtho-NCU00881	biological_process	22879952	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	7030363	7032262	-	NCU00830	Ntsc1142	biological_process	21354536	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	7689849	7692821	-	NCU00651	NoOrtho-NCU00651	biological_process	19940117	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	7850599	7852850	+	NCU00609	Ntsc2929	biological_process	20870880	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	8112407	8116828	-	NCU00528	Ntsc2824	biological_process	20601042	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	8217078	8220083	+	NCU00499	Ntsc2844	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	8770144	8774249	-	NCU02896	Ntsc2790	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	9117558	9151762	+	NCU02793	NoOrtho-NCU02793	biological_process	19543374	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	9192180	9195193	+	NCU02788	Ntsc3492	biological_process	21750256	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	I	gene	9365024	9366871	-	NCU09263	Ntsc3285	biological_process	22879952	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	II	gene	172330	174131	-	NCU03576	Ntsc6202	biological_process	23028357	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	II	gene	189409	193428	-	NCU03571	Ntsc8057	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	II	gene	368381	373148	-	NCU03523	Ntsc6211	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	II	gene	508113	511595	-	NCU03489	NoOrtho-NCU03489	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	II	gene	1471066	1475393	-	NCU05383	Ntsc2188	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	II	gene	1787433	1791808	-	NCU06842	NoOrtho-NCU06842	biological_process	20522492	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	II	gene	1903580	1908974	-	NCU06799	Ntsc8064	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	II	gene	2382699	2385687	-	NCU01797	Ntsc6360	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	II	gene	2433075	2439647	+	NCU01789	NoOrtho-NCU01789	biological_process	20522492	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	II	gene	2607929	2611456	+	NCU01731	Ntsc8068	biological_process	17631397	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	II	gene	2978149	2979759	-	NCU01605	Ntsc6498	biological_process	19788544	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	II	gene	3264427	3269512	-	NCU01498	Ntsc2258	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	II	gene	3556059	3560450	-	NCU08468	Ntsc6558	biological_process	22291944	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	II	gene	3855430	3859274	-	NCU08741	Ntsc6612	biological_process	20601042	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	II	gene	4177546	4180504	+	NCU09345	NoOrtho-NCU09345	biological_process	13680155	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	384222	386039	-	NCU05655	NoOrtho-NCU05655	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	391094	393053	-	NCU05658	Ntsc6074	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	972480	974377	+	NCU07817	Ntsc6026	biological_process	22879952	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	1099742	1103951	-	NCU07850	Ntsc5997	biological_process	18567788	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	1188639	1192368	-	NCU07872	Ntsc6010	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	1291163	1295655	-	NCU06407	Ntsc8029	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	1306483	1311141	+	NCU06411	Ntsc5977	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	1333215	1336588	+	NCU06419	Ntsc5974	biological_process	18562669	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	1390265	1393958	+	NCU06429	Ntsc5967	biological_process	21598047	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	1462668	1465414	-	NCU06454	Ntsc5948	biological_process	22087253	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	1614044	1617257	-	NCU06493	Ntsc5922	biological_process	8856670	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	1769080	1771558	+	NCU06175	Ntsc5928	biological_process	21354536	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	1804191	1808733	+	NCU06182	Ntsc5925	biological_process	18562669	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	1851480	1853337	+	NCU06193	Ntsc5905	biological_process	10982393	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	1883165	1887524	+	NCU06202	Ntsc5915	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	1904221	1907451	-	NCU06205	Ntsc5888	biological_process	8887652	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	2018007	2021587	-	NCU06240	NoOrtho-NCU06240	biological_process	18079175	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	2383779	2387486	-	NCU00043	Ntsc5796	biological_process	19141471	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	2933803	2939195	-	NCU00188	Ntsc5681	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	2989948	2992927	-	NCU00202	Ntsc5678	biological_process	22693603	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	3195326	3197868	+	NCU00257	Ntsc5705	biological_process	11452013	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	3258938	3268638	+	NCU00274	Ntsc5748	biological_process	18790091	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	3470183	3473254	+	NCU00329	Ntsc5744	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	3747790	3751837	+	NCU00406	Ntsc1995	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	3837043	3838854	+	NCU00431	Ntsc5641	biological_process	9584158	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	4155490	4156612	+	NCU08992	NoOrtho-NCU08992	biological_process	21354536	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	III	gene	5111604	5114534	+	NCU08791	Ntsc5842	biological_process	21354536	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	IV	gene	536988	539552	-	NCU04866	Ntsc5215	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	IV	gene	1118725	1122244	-	NCU04990	Ntsc4846	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	IV	gene	1740832	1745290	-	NCU06593	Ntsc4937	biological_process	22906237	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	IV	gene	1867266	1870286	-	NCU06630	Ntsc4969	biological_process	9790584	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	IV	gene	1969753	1972318	+	NCU09739	Ntsc4978	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	IV	gene	1998208	2002351	+	NCU09730	Ntsc4965	biological_process	10469561	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	IV	gene	2178781	2182428	+	NCU07700	NoOrtho-NCU07700	biological_process	11254137	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	IV	gene	3125985	3127722	-	NCU04513	Ntsc5154	biological_process	21354536	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	IV	gene	3403117	3405014	+	NCU04426	Ntsc5147	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	IV	gene	3518539	3523558	+	NCU04390	NoOrtho-NCU04390	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	IV	gene	4115324	4118378	-	NCU08683	Ntsc7979	biological_process	22703449	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	IV	gene	4218260	4222142	+	NCU08651	Ntsc5311	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	IV	gene	4484163	4487321	-	NCU07296	Ntsc7984	biological_process	1534751	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	IV	gene	4729512	4743787	+	NCU06976	NoOrtho-NCU06976	biological_process	7929559	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	IV	gene	5176440	5178927	-	NCU08807	Ntsc1930	biological_process	17625933	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	IV	gene	5371696	5373286	-	NCU05313	Ntsc5466	biological_process	18227279	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	IV	gene	5526379	5529412	-	NCU05268	Ntsc7994	biological_process	21296914	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	287232	291574	-	NCU07788	Ntsc4442	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	672325	674860	+	NCU08909	Ntsc4757	biological_process	22879952	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	1501026	1504190	-	NCU04612	NoOrtho-NCU04612	biological_process	18562669	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	1776617	1780279	-	NCU03593	Ntsc4035	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	2359294	2361695	+	NCU03770	Ntsc4117	biological_process	22701726	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	2467154	2470440	+	NCU03804	NoOrtho-NCU03804	biological_process	9349701	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	2824318	2826648	-	NCU01069	Ntsc4191	biological_process	22646057	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	3147220	3149869	+	NCU01179	Ntsc4249	biological_process	11359915	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	3169106	3175037	+	NCU01187	Ntsc4253	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	3292409	3294461	+	NCU01225	Ntsc4263	biological_process	21354536	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	3396270	3397430	-	NCU16992	NoOrtho-NCU16992	biological_process	12477799	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	3873576	3876112	+	NCU01388	Ntsc4372	biological_process	16457356	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	3886220	3887806	-	NCU01393	Ntsc1598	biological_process	22796096	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	3977115	3980680	-	NCU01414	Ntsc1603	biological_process	8913744	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	4073014	4078872	+	NCU06638	NoOrtho-NCU06638	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	4267305	4272238	-	NCU06685	NoOrtho-NCU06685	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	4334173	4337478	+	NCU06703	Ntsc1620	biological_process	18296620	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	4812741	4815929	+	NCU04096	NoOrtho-NCU04096	biological_process	21354536	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	4823431	4826401	-	NCU04100	NoOrtho-NCU04100	biological_process	18227279	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	5143236	5146931	-	NCU04189	Ntsc7932	biological_process	9099631	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	5190060	5192136	-	NCU04202	Ntsc4590	biological_process	19765588	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	5327537	5332820	-	NCU04242	NoOrtho-NCU04242	biological_process	21354536	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	5336351	5338847	+	NCU04244	Ntsc4565	biological_process	14599895	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	5339948	5343181	-	NCU04245	Ntsc4597	biological_process	10501936	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	5345839	5348366	+	NCU04247	Ntsc4567	biological_process	7929559	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	5420669	5426873	+	NCU04264	Ntsc1659	biological_process	21354536	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	5556156	5557597	+	NCU04302	Ntsc4628	biological_process	21354536	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	5733514	5735438	-	NCU08927	Ntsc7937	biological_process	21354536	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	5921173	5925111	+	NCU09842	Ntsc4694	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	6207513	6211631	+	NCU07221	Ntsc1691	biological_process	21354536	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	6271879	6274690	+	NCU07196	Ntsc4724	biological_process	11452013	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	6352180	6354748	+	NCU07173	Ntsc4728	biological_process	22646057	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	V	gene	6354743	6358025	-	NCU07172	NoOrtho-NCU07172	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	VI	gene	13843	17940	+	NCU07139	Ntsc7671	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	VI	gene	653582	657867	+	NCU04747	Ntsc7621	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	VI	gene	2076684	2081610	-	NCU03894	NoOrtho-NCU03894	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	VI	gene	2167467	2170632	+	NCU03931	Ntsc2579	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	VI	gene	3910624	3915113	+	NCU05051	Ntsc7442	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	VI	gene	3938154	3943089	+	NCU05046	NoOrtho-NCU05046	biological_process	21354536	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	VII	gene	739939	743321	+	NCU06910	NoOrtho-NCU06910	biological_process	22879952	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	VII	gene	1913054	1917065	+	NCU06068	Ntsc6877	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	VII	gene	1919468	1924712	+	NCU06067	Ntsc6864	biological_process	22087253	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	VII	gene	2105240	2109312	-	NCU02460	NoOrtho-NCU02460	biological_process	14599895	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	VII	gene	2654598	2657461	-	NCU02393	NoOrtho-NCU02393	biological_process	18562669	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	VII	gene	2873838	2876240	-	NCU02333	NoOrtho-NCU02333	biological_process	21354536	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	VII	gene	3240259	3247655	-	NCU02234	NoOrtho-NCU02234	biological_process	18562669	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	VII	gene	3454730	3457555	+	NCU08127	NoOrtho-NCU08127	biological_process	22701726	IMP: Inferred from Mutant Phenotype
+GO:0030448	hyphal growth	1.3160e-03	1.2080e-05	3.2928e-03	VII	gene	3830609	3832659	+	NCU05789	Ntsc7149	biological_process	22879952	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	753028	756753	+	NCU09071	Ntsc3847	biological_process	19788544	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	1253810	1257287	+	NCU02110	Ntsc3809	biological_process	18567788	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	2113962	2118659	+	NCU01895	NoOrtho-NCU01895	biological_process	17392518	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	3522966	3526584	-	NCU09377	NoOrtho-NCU09377	biological_process	9987122	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	4442191	4448082	-	NCU03071	Ntsc3407	biological_process	12619694	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	5299265	5301649	-	NCU03320	Ntsc7833	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	5416503	5419355	+	NCU09123	NoOrtho-NCU09123	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	5564501	5573857	-	NCU08377	NoOrtho-NCU08377	biological_process	12456011	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	5815007	5820220	+	NCU09202	NoOrtho-NCU09202	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	6070178	6072411	+	NCU07399	Ntsc3173	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	6094075	6098544	-	NCU07392	Ntsc3181	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	6708566	6710526	+	NCU00924	Ntsc3066	biological_process	19927742	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	6752091	6757105	-	NCU00914	NoOrtho-NCU00914	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	6815517	6819124	-	NCU00902	Ntsc3033	biological_process	6235211	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	6878944	6881270	+	NCU00881	NoOrtho-NCU00881	biological_process	22879952	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	7030363	7032262	-	NCU00830	Ntsc1142	biological_process	20034585	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	7179990	7182378	-	NCU00786	Ntsc3007	biological_process	16963633	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	7913654	7917043	+	NCU00587	NoOrtho-NCU00587	biological_process	17392518	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	8217078	8220083	+	NCU00499	Ntsc2844	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	8677529	8678948	-	NCU02925	Ntsc2761	biological_process	19277664	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	8770144	8774249	-	NCU02896	Ntsc2790	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	9192180	9195193	+	NCU02788	Ntsc3492	biological_process	21750256	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	I	gene	9365024	9366871	-	NCU09263	Ntsc3285	biological_process	22879952	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	II	gene	172330	174131	-	NCU03576	Ntsc6202	biological_process	23028357	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	II	gene	498002	500940	+	NCU03491	Ntsc6650	biological_process	9578630	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	II	gene	1787433	1791808	-	NCU06842	NoOrtho-NCU06842	biological_process	20709620	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	II	gene	2382699	2385687	-	NCU01797	Ntsc6360	biological_process	9584090	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	II	gene	2433075	2439647	+	NCU01789	NoOrtho-NCU01789	biological_process	20522492	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	II	gene	2607929	2611456	+	NCU01731	Ntsc8068	biological_process	17631397	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	II	gene	2978149	2979759	-	NCU01605	Ntsc6498	biological_process	19788544	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	II	gene	3816306	3819180	-	NCU08730	Ntsc6579	biological_process	9393441	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	II	gene	3855430	3859274	-	NCU08741	Ntsc6612	biological_process	20601042	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	II	gene	4147012	4150433	-	NCU09337	Ntsc2290	biological_process	19064710	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	III	gene	384222	386039	-	NCU05655	NoOrtho-NCU05655	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	III	gene	391094	393053	-	NCU05658	Ntsc6074	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	III	gene	972480	974377	+	NCU07817	Ntsc6026	biological_process	22879952	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	III	gene	1099742	1103951	-	NCU07850	Ntsc5997	biological_process	18567788	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	III	gene	1188639	1192368	-	NCU07872	Ntsc6010	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	III	gene	1333215	1336588	+	NCU06419	Ntsc5974	biological_process	18849472	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	III	gene	1614044	1617257	-	NCU06493	Ntsc5922	biological_process	12456011	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	III	gene	1804191	1808733	+	NCU06182	Ntsc5925	biological_process	9584090	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	III	gene	1851480	1853337	+	NCU06193	Ntsc5905	biological_process	10982393	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	III	gene	1883165	1887524	+	NCU06202	Ntsc5915	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	III	gene	1904221	1907451	-	NCU06205	Ntsc5888	biological_process	8887652	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	III	gene	2018007	2021587	-	NCU06240	NoOrtho-NCU06240	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	III	gene	2379374	2381129	+	NCU00041	Ntsc5803	biological_process	15701799	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	III	gene	2383779	2387486	-	NCU00043	Ntsc5796	biological_process	19141471	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	III	gene	2605290	2606349	-	NCU00097	Ntsc5773	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	III	gene	2933803	2939195	-	NCU00188	Ntsc5681	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	III	gene	3507722	3512003	-	NCU00340	Ntsc5651	biological_process	15802524	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	III	gene	3747790	3751837	+	NCU00406	Ntsc1995	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	III	gene	3864441	3867813	+	NCU00440	Ntsc5608	biological_process	12455986	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	IV	gene	536988	539552	-	NCU04866	Ntsc5215	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	IV	gene	1118725	1122244	-	NCU04990	Ntsc4846	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	IV	gene	1969753	1972318	+	NCU09739	Ntsc4978	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	IV	gene	2282977	2286219	-	NCU07674	Ntsc5020	biological_process	19788544	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	IV	gene	2507739	2512139	+	NCU08294	Ntsc5070	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	IV	gene	2592691	2598157	-	NCU08270	Ntsc5063	biological_process	18036854	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	IV	gene	3403117	3405014	+	NCU04426	Ntsc5147	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	IV	gene	4431604	4439201	+	NCU07307	NoOrtho-NCU07307	biological_process	10501937	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	IV	gene	4870941	4874010	-	NCU07007	Ntsc5413	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	IV	gene	4948586	4952179	-	NCU07024	Ntsc5415	biological_process	17392518	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	IV	gene	4995336	4998915	-	NCU15829	Ntsc5417	biological_process	10998244	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	IV	gene	5296170	5303095	+	NCU09915	NoOrtho-NCU09915	biological_process	20519745	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	IV	gene	5751253	5754729	-	NCU05206	Ntsc5493	biological_process	11003665	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	V	gene	1501026	1504190	-	NCU04612	NoOrtho-NCU04612	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	V	gene	2223109	2227285	+	NCU03727	NoOrtho-NCU03727	biological_process	20601042	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	V	gene	3059102	3062061	+	NCU01154	NoOrtho-NCU01154	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	V	gene	3396270	3397430	-	NCU16992	NoOrtho-NCU16992	biological_process	12477799	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	V	gene	3692753	3700051	-	NCU01335	Ntsc4361	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	V	gene	3873576	3876112	+	NCU01388	Ntsc4372	biological_process	16457356	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	V	gene	3886220	3887806	-	NCU01393	Ntsc1598	biological_process	22796096	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	V	gene	3977115	3980680	-	NCU01414	Ntsc1603	biological_process	8913744	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	V	gene	4073014	4078872	+	NCU06638	NoOrtho-NCU06638	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	V	gene	4267305	4272238	-	NCU06685	NoOrtho-NCU06685	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	V	gene	4812741	4815929	+	NCU04096	NoOrtho-NCU04096	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	V	gene	5921173	5925111	+	NCU09842	Ntsc4694	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	V	gene	6354743	6358025	-	NCU07172	NoOrtho-NCU07172	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	VI	gene	13843	17940	+	NCU07139	Ntsc7671	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	VI	gene	653582	657867	+	NCU04747	Ntsc7621	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	VI	gene	1367907	1369720	-	NCU05601	Ntsc7489	biological_process	None	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	VI	gene	1378109	1380263	+	NCU05598	Ntsc7515	biological_process	9178004	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	VI	gene	2167467	2170632	+	NCU03931	Ntsc2579	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	VI	gene	2397861	2402961	+	NCU04001	Ntsc7382	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	VI	gene	3748067	3749657	-	NCU05097	Ntsc7688	biological_process	22961396	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	VI	gene	3809579	3812281	-	NCU05079	NoOrtho-NCU05079	biological_process	22961396	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	VII	gene	2030147	2032152	+	NCU06031	Ntsc2385	biological_process	22961396	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	VII	gene	2105240	2109312	-	NCU02460	NoOrtho-NCU02460	biological_process	14599895	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	VII	gene	2654598	2657461	-	NCU02393	NoOrtho-NCU02393	biological_process	15802524	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	VII	gene	2767393	2773846	+	NCU02356	NoOrtho-NCU02356	biological_process	6235211	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	VII	gene	3200844	3206246	-	NCU02245	Ntsc7253	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	VII	gene	3240259	3247655	-	NCU02234	NoOrtho-NCU02234	biological_process	18849472	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	VII	gene	3289308	3292383	+	NCU02219	Ntsc7237	biological_process	22635922	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	VII	gene	3727404	3729156	+	NCU05758	Ntsc7207	biological_process	22298702	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	VII	gene	3759615	3760745	+	NCU05768	Ntsc7168	biological_process	15879524	IMP: Inferred from Mutant Phenotype
+GO:0000909	sporocarp development involved in sexual reproduction	1.8511e-01	1.0431e-03	1.0524e-02	VII	gene	3830609	3832659	+	NCU05789	Ntsc7149	biological_process	22879952	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	552868	555385	+	NCU07460	Ntsc3881	biological_process	19788544	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	1312438	1316433	+	NCU02094	NoOrtho-NCU02094	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	4442191	4448082	-	NCU03071	Ntsc3407	biological_process	22900028	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	4888873	4895320	-	NCU03200	NoOrtho-NCU03200	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	5201256	5205099	+	NCU03292	Ntsc3300	biological_process	22983986	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	5281468	5284082	-	NCU03314	NoOrtho-NCU03314	biological_process	19788544	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	5299265	5301649	-	NCU03320	Ntsc7833	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	5416503	5419355	+	NCU09123	NoOrtho-NCU09123	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	5677011	5679737	-	NCU08346	NoOrtho-NCU08346	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	5685819	5687655	-	NCU08342	Ntsc3209	biological_process	21151958	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	5815007	5820220	+	NCU09202	NoOrtho-NCU09202	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	5826154	5830642	+	NCU09205	Ntsc3203	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	6070178	6072411	+	NCU07399	Ntsc3173	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	6094075	6098544	-	NCU07392	Ntsc3181	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	6158890	6166641	+	NCU07378	Ntsc3156	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	6224679	6226622	-	NCU07361	Ntsc1182	biological_process	21151958	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	6878944	6881270	+	NCU00881	NoOrtho-NCU00881	biological_process	22879952	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	7572367	7575420	+	NCU00682	Ntsc2947	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	7850599	7852850	+	NCU00609	Ntsc2929	biological_process	20870880	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	8217078	8220083	+	NCU00499	Ntsc2844	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	8770144	8774249	-	NCU02896	Ntsc2790	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	9024259	9030833	+	NCU02815	Ntsc3725	biological_process	8622950	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	I	gene	9192180	9195193	+	NCU02788	Ntsc3492	biological_process	21750256	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	II	gene	172330	174131	-	NCU03576	Ntsc6202	biological_process	23028357	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	II	gene	368381	373148	-	NCU03523	Ntsc6211	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	II	gene	1787433	1791808	-	NCU06842	NoOrtho-NCU06842	biological_process	20709620	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	II	gene	1903580	1908974	-	NCU06799	Ntsc8064	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	II	gene	2382699	2385687	-	NCU01797	Ntsc6360	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	II	gene	2433075	2439647	+	NCU01789	NoOrtho-NCU01789	biological_process	20522492	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	II	gene	2978149	2979759	-	NCU01605	Ntsc6498	biological_process	19788544	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	II	gene	3264427	3269512	-	NCU01498	Ntsc2258	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	III	gene	384222	386039	-	NCU05655	NoOrtho-NCU05655	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	III	gene	391094	393053	-	NCU05658	Ntsc6074	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	III	gene	1188639	1192368	-	NCU07872	Ntsc6010	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	III	gene	1291163	1295655	-	NCU06407	Ntsc8029	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	III	gene	1306483	1311141	+	NCU06411	Ntsc5977	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	III	gene	1804191	1808733	+	NCU06182	Ntsc5925	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	III	gene	1883165	1887524	+	NCU06202	Ntsc5915	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	III	gene	2018007	2021587	-	NCU06240	NoOrtho-NCU06240	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	III	gene	2835349	2837839	+	NCU00157	Ntsc8012	biological_process	21151958	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	III	gene	2933803	2939195	-	NCU00188	Ntsc5681	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	III	gene	3323266	3326815	+	NCU00289	NoOrtho-NCU00289	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	III	gene	3470183	3473254	+	NCU00329	Ntsc5744	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	III	gene	3747790	3751837	+	NCU00406	Ntsc1995	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	III	gene	3964507	3966261	-	NCU00467	Ntsc5568	biological_process	22589747	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	III	gene	4456383	4460313	-	NCU07535	Ntsc6150	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	IV	gene	1118725	1122244	-	NCU04990	Ntsc4846	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	IV	gene	1268616	1272971	-	NCU07945	NoOrtho-NCU07945	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	IV	gene	1740832	1745290	-	NCU06593	Ntsc4937	biological_process	22906237	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	IV	gene	1969753	1972318	+	NCU09739	Ntsc4978	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	IV	gene	2507739	2512139	+	NCU08294	Ntsc5070	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	IV	gene	4484163	4487321	-	NCU07296	Ntsc7984	biological_process	19818014	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	V	gene	1501026	1504190	-	NCU04612	NoOrtho-NCU04612	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	V	gene	1776617	1780279	-	NCU03593	Ntsc4035	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	V	gene	2069903	2074521	-	NCU03686	NoOrtho-NCU03686	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	V	gene	3886220	3887806	-	NCU01393	Ntsc1598	biological_process	22796096	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	V	gene	4145313	4149139	-	NCU06656	Ntsc4419	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	V	gene	4812741	4815929	+	NCU04096	NoOrtho-NCU04096	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	V	gene	5114339	5117351	+	NCU04179	Ntsc4551	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	V	gene	5921173	5925111	+	NCU09842	Ntsc4694	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	V	gene	6354743	6358025	-	NCU07172	NoOrtho-NCU07172	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	VI	gene	13843	17940	+	NCU07139	Ntsc7671	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	VI	gene	581298	586798	-	NCU04731	Ntsc2663	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	VI	gene	614672	620621	+	NCU04736	NoOrtho-NCU04736	biological_process	21335528	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	VI	gene	653582	657867	+	NCU04747	Ntsc7621	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	VI	gene	2167467	2170632	+	NCU03931	Ntsc2579	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	VII	gene	739939	743321	+	NCU06910	NoOrtho-NCU06910	biological_process	22879952	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	VII	gene	1812241	1816456	-	NCU06095	NoOrtho-NCU06095	biological_process	19800017	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	VII	gene	2654598	2657461	-	NCU02393	NoOrtho-NCU02393	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	VII	gene	3240259	3247655	-	NCU02234	NoOrtho-NCU02234	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0070787	conidiophore development	2.1094e-03	9.6241e-03	1.0524e-02	VII	gene	3305982	3309180	+	NCU02214	Ntsc7247	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	I	gene	155599	157284	+	NCU10696	Ntsc3918	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	I	gene	1481604	1483771	+	NCU02067	Ntsc1386	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	I	gene	1751806	1755449	-	NCU01992	Ntsc3731	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	I	gene	2658016	2662124	+	NCU11235	NoOrtho-NCU11235	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	I	gene	2940203	2942854	+	NCU02620	Ntsc1306	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	I	gene	3209510	3214860	-	NCU02689	Ntsc1295	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	I	gene	3568677	3576199	-	NCU09367	Ntsc7785	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	I	gene	6205457	6208984	+	NCU07366	Ntsc3147	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	I	gene	6598064	6600359	-	NCU00951	Ntsc3082	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	I	gene	7464712	7469607	+	NCU00712	Ntsc2954	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	I	gene	7689849	7692821	-	NCU00651	NoOrtho-NCU00651	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	I	gene	7794129	7795971	+	NCU00624	Ntsc2935	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	I	gene	8974340	8976019	+	NCU02829	Ntsc3884	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	I	gene	9047665	9050212	+	NCU02810	Ntsc3723	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	II	gene	79724	82693	-	NCU09602	NoOrtho-NCU09602	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	II	gene	532003	536457	+	NCU03483	Ntsc6658	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	II	gene	2536027	2538074	+	NCU01756	Ntsc6394	biological_process	9819052	None
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	II	gene	2655536	2658059	-	NCU01713	Ntsc6428	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	II	gene	3342200	3344700	+	NCU01484	Ntsc6507	biological_process	18716060	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	II	gene	4336877	4338852	-	NCU09757	Ntsc6636	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	II	gene	4376995	4380245	+	NCU09468	NoOrtho-NCU09468	biological_process	None	ISS: Inferred from Sequence or Structural Similarity
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	III	gene	1462668	1465414	-	NCU06454	Ntsc5948	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	III	gene	1642109	1648023	-	NCU06500	Ntsc5935	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	III	gene	3544277	3549920	+	NCU00352	NoOrtho-NCU00352	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	III	gene	3652007	3653996	-	NCU11181	Ntsc5600	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	IV	gene	1228796	1232106	+	NCU07955	Ntsc7955	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	IV	gene	1740832	1745290	-	NCU06593	Ntsc4937	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	IV	gene	2185940	2189996	-	NCU07698	Ntsc5022	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	IV	gene	4115324	4118378	-	NCU08683	Ntsc7979	biological_process	None	ISS: Inferred from Sequence or Structural Similarity
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	IV	gene	4378046	4382149	-	NCU07319	Ntsc5328	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	IV	gene	4484163	4487321	-	NCU07296	Ntsc7984	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	IV	gene	4535616	4538835	-	NCU07280	Ntsc1897	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	IV	gene	4589466	4591276	+	NCU07261	Ntsc5350	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	IV	gene	4729512	4743787	+	NCU06976	NoOrtho-NCU06976	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	V	gene	1854769	1857178	-	NCU03616	NoOrtho-NCU03616	biological_process	None	ISS: Inferred from Sequence or Structural Similarity
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	V	gene	1896072	1899082	+	NCU03628	Ntsc1503	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	V	gene	2467154	2470440	+	NCU03804	NoOrtho-NCU03804	biological_process	None	ISS: Inferred from Sequence or Structural Similarity
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	V	gene	3105178	3108879	+	NCU01166	NoOrtho-NCU01166	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	V	gene	4538315	4542381	+	NCU09544	NoOrtho-NCU09544	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	V	gene	5143236	5146931	-	NCU04189	Ntsc7932	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	VI	gene	2141738	2144733	-	NCU03922	Ntsc7349	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	VI	gene	2565204	2567073	+	NCU04050	Ntsc2603	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	VII	gene	1919468	1924712	+	NCU06067	Ntsc6864	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	VII	gene	1962715	1966114	-	NCU06054	NoOrtho-NCU06054	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	VII	gene	3021233	3026878	+	NCU02295	Ntsc6806	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0007163	establishment or maintenance of cell polarity	3.5131e-02	9.6241e-03	7.8833e-02	VII	gene	3349507	3354270	+	NCU02202	Ntsc7233	biological_process	12960438	IMP: Inferred from Mutant Phenotype
+GO:0001411	hyphal tip	1.9158e-01	1.8875e-02	3.1490e-01	I	gene	1048323	1050458	+	NCU02160	Ntsc3816	cellular_component	22087253	IDA: Inferred from Direct Assay
+GO:0001411	hyphal tip	1.9158e-01	1.8875e-02	3.1490e-01	I	gene	3209510	3214860	-	NCU02689	Ntsc1295	cellular_component	18716060	IEP: Inferred from Expression Pattern
+GO:0001411	hyphal tip	1.9158e-01	1.8875e-02	3.1490e-01	I	gene	4609229	4614172	+	NCU03115	NoOrtho-NCU03115	cellular_component	19281855	IEP: Inferred from Expression Pattern
+GO:0001411	hyphal tip	1.9158e-01	1.8875e-02	3.1490e-01	I	gene	5157395	5159689	+	NCU03276	NoOrtho-NCU03276	cellular_component	19238386	IDA: Inferred from Direct Assay
+GO:0001411	hyphal tip	1.9158e-01	1.8875e-02	3.1490e-01	I	gene	7626563	7631591	-	NCU00668	Ntsc2901	cellular_component	22703449	IDA: Inferred from Direct Assay
+GO:0001411	hyphal tip	1.9158e-01	1.8875e-02	3.1490e-01	I	gene	9117558	9151762	+	NCU02793	NoOrtho-NCU02793	cellular_component	19543374	IEP: Inferred from Expression Pattern
+GO:0001411	hyphal tip	1.9158e-01	1.8875e-02	3.1490e-01	II	gene	172330	174131	-	NCU03576	Ntsc6202	cellular_component	23028357	IEP: Inferred from Expression Pattern
+GO:0001411	hyphal tip	1.9158e-01	1.8875e-02	3.1490e-01	II	gene	3556059	3560450	-	NCU08468	Ntsc6558	cellular_component	22291944	IDA: Inferred from Direct Assay
+GO:0001411	hyphal tip	1.9158e-01	1.8875e-02	3.1490e-01	III	gene	1390265	1393958	+	NCU06429	Ntsc5967	cellular_component	21598047	IEP: Inferred from Expression Pattern
+GO:0001411	hyphal tip	1.9158e-01	1.8875e-02	3.1490e-01	III	gene	1462668	1465414	-	NCU06454	Ntsc5948	cellular_component	22087253	IDA: Inferred from Direct Assay
+GO:0001411	hyphal tip	1.9158e-01	1.8875e-02	3.1490e-01	IV	gene	1590805	1595694	+	NCU06544	NoOrtho-NCU06544	cellular_component	21070858	IEP: Inferred from Expression Pattern
+GO:0001411	hyphal tip	1.9158e-01	1.8875e-02	3.1490e-01	IV	gene	1740832	1745290	-	NCU06593	Ntsc4937	cellular_component	22906237	IEP: Inferred from Expression Pattern
+GO:0001411	hyphal tip	1.9158e-01	1.8875e-02	3.1490e-01	IV	gene	4729512	4743787	+	NCU06976	NoOrtho-NCU06976	cellular_component	22649085	IDA: Inferred from Direct Assay
+GO:0001411	hyphal tip	1.9158e-01	1.8875e-02	3.1490e-01	V	gene	3226250	3227820	-	NCU01204	Ntsc4305	cellular_component	20302965	IEP: Inferred from Expression Pattern
+GO:0001411	hyphal tip	1.9158e-01	1.8875e-02	3.1490e-01	V	gene	5143236	5146931	-	NCU04189	Ntsc7932	cellular_component	19843220	IEP: Inferred from Expression Pattern
+GO:0001411	hyphal tip	1.9158e-01	1.8875e-02	3.1490e-01	VII	gene	1919468	1924712	+	NCU06067	Ntsc6864	cellular_component	22087253	IDA: Inferred from Direct Assay
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	I	gene	2113962	2118659	+	NCU01895	NoOrtho-NCU01895	biological_process	17392518	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	I	gene	2804910	2808507	+	NCU02582	NoOrtho-NCU02582	biological_process	9178001	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	I	gene	3284468	3286740	-	NCU02713	Ntsc1287	biological_process	19015548	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	I	gene	3522966	3526584	-	NCU09377	NoOrtho-NCU09377	biological_process	9987122	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	I	gene	4442191	4448082	-	NCU03071	Ntsc3407	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	I	gene	4642603	4644949	-	NCU03124	Ntsc1257	biological_process	11959847	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	I	gene	5201256	5205099	+	NCU03292	Ntsc3300	biological_process	22983986	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	I	gene	5416503	5419355	+	NCU09123	NoOrtho-NCU09123	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	I	gene	5685819	5687655	-	NCU08342	Ntsc3209	biological_process	21151958	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	I	gene	5727235	5728917	-	NCU08332	Ntsc3208	biological_process	11273682	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	I	gene	5815007	5820220	+	NCU09202	NoOrtho-NCU09202	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	I	gene	6070178	6072411	+	NCU07399	Ntsc3173	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	I	gene	6094075	6098544	-	NCU07392	Ntsc3181	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	I	gene	6224679	6226622	-	NCU07361	Ntsc1182	biological_process	21151958	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	I	gene	6708566	6710526	+	NCU00924	Ntsc3066	biological_process	19927742	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	I	gene	7850599	7852850	+	NCU00609	Ntsc2929	biological_process	20870880	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	I	gene	7913654	7917043	+	NCU00587	NoOrtho-NCU00587	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	I	gene	8112407	8116828	-	NCU00528	Ntsc2824	biological_process	20601042	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	I	gene	8217078	8220083	+	NCU00499	Ntsc2844	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	I	gene	8960384	8965791	-	NCU02833	Ntsc3885	biological_process	21666072	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	II	gene	230862	233611	+	NCU03559	Ntsc2173	biological_process	19239619	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	II	gene	1903580	1908974	-	NCU06799	Ntsc8064	biological_process	22445960	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	II	gene	2382699	2385687	-	NCU01797	Ntsc6360	biological_process	9584090	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	II	gene	3514186	3517793	+	NCU08480	Ntsc6564	biological_process	18586951	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	II	gene	3556059	3560450	-	NCU08468	Ntsc6558	biological_process	22291944	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	II	gene	3805777	3809265	-	NCU08726	Ntsc6577	biological_process	15126394	TAS: Traceable Author Statement
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	II	gene	3855430	3859274	-	NCU08741	Ntsc6612	biological_process	20601042	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	II	gene	4336877	4338852	-	NCU09757	Ntsc6636	biological_process	16524913	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	III	gene	391094	393053	-	NCU05658	Ntsc6074	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	III	gene	1188639	1192368	-	NCU07872	Ntsc6010	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	III	gene	1306483	1311141	+	NCU06411	Ntsc5977	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	III	gene	1333215	1336588	+	NCU06419	Ntsc5974	biological_process	18562669	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	III	gene	1390265	1393958	+	NCU06429	Ntsc5967	biological_process	21598047	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	III	gene	1614044	1617257	-	NCU06493	Ntsc5922	biological_process	8856670	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	III	gene	1679815	1684035	-	NCU06508	Ntsc2093	biological_process	16524913	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	III	gene	1804191	1808733	+	NCU06182	Ntsc5925	biological_process	9584090	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	III	gene	1883165	1887524	+	NCU06202	Ntsc5915	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	III	gene	1904221	1907451	-	NCU06205	Ntsc5888	biological_process	8887652	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	III	gene	2018007	2021587	-	NCU06240	NoOrtho-NCU06240	biological_process	18079175	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	III	gene	2383779	2387486	-	NCU00043	Ntsc5796	biological_process	19141471	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	III	gene	2835349	2837839	+	NCU00157	Ntsc8012	biological_process	21151958	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	III	gene	2989948	2992927	-	NCU00202	Ntsc5678	biological_process	22693603	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	III	gene	3195326	3197868	+	NCU00257	Ntsc5705	biological_process	9159520	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	III	gene	3561379	3564584	+	NCU00355	Ntsc5626	biological_process	12912899	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	III	gene	3747790	3751837	+	NCU00406	Ntsc1995	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	III	gene	3864441	3867813	+	NCU00440	Ntsc5608	biological_process	12455986	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	III	gene	3964507	3966261	-	NCU00467	Ntsc5568	biological_process	22589747	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	III	gene	3992335	3997769	-	NCU00478	NoOrtho-NCU00478	biological_process	20876563	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	IV	gene	271905	274263	+	NCU07617	Ntsc4826	biological_process	21220038	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	IV	gene	296219	298712	-	NCU07621	Ntsc1739	biological_process	18989627	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	IV	gene	1118725	1122244	-	NCU04990	Ntsc4846	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	IV	gene	1740832	1745290	-	NCU06593	Ntsc4937	biological_process	22906237	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	IV	gene	1786406	1788604	+	NCU06606	Ntsc4949	biological_process	19239619	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	IV	gene	1969753	1972318	+	NCU09739	Ntsc4978	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	IV	gene	2984864	2988503	-	NCU06302	Ntsc1805	biological_process	22445960	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	IV	gene	3863370	3866895	+	NCU07999	Ntsc5253	biological_process	16524913	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	IV	gene	4115324	4118378	-	NCU08683	Ntsc7979	biological_process	22703449	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	IV	gene	4484163	4487321	-	NCU07296	Ntsc7984	biological_process	19818014	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	IV	gene	4948586	4952179	-	NCU07024	Ntsc5415	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	IV	gene	5751253	5754729	-	NCU05206	Ntsc5493	biological_process	11003665	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	V	gene	1501026	1504190	-	NCU04612	NoOrtho-NCU04612	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	V	gene	1776617	1780279	-	NCU03593	Ntsc4035	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	V	gene	2561166	2563488	-	NCU03833	NoOrtho-NCU03833	biological_process	9680955	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	V	gene	3090979	3094200	+	NCU01162	NoOrtho-NCU01162	biological_process	22879952	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	V	gene	3105178	3108879	+	NCU01166	NoOrtho-NCU01166	biological_process	18079175	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	V	gene	3147220	3149869	+	NCU01179	Ntsc4249	biological_process	11359915	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	V	gene	3718339	3721921	-	NCU01345	NoOrtho-NCU01345	biological_process	18948219	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	V	gene	3873576	3876112	+	NCU01388	Ntsc4372	biological_process	16457356	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	V	gene	3886220	3887806	-	NCU01393	Ntsc1598	biological_process	22796096	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	V	gene	4174117	4175803	-	NCU06663	Ntsc4421	biological_process	16524913	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	V	gene	4812741	4815929	+	NCU04096	NoOrtho-NCU04096	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	V	gene	5339948	5343181	-	NCU04245	Ntsc4597	biological_process	10501936	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	V	gene	5345839	5348366	+	NCU04247	Ntsc4567	biological_process	11129047	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	V	gene	5921173	5925111	+	NCU09842	Ntsc4694	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	V	gene	6207513	6211631	+	NCU07221	Ntsc1691	biological_process	22445960	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	V	gene	6354743	6358025	-	NCU07172	NoOrtho-NCU07172	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	VI	gene	614672	620621	+	NCU04736	NoOrtho-NCU04736	biological_process	21335528	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	VI	gene	653582	657867	+	NCU04747	Ntsc7621	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	VI	gene	1221833	1224234	+	NCU05644	Ntsc7519	biological_process	16524913	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	VI	gene	2099470	2101485	+	NCU03901	Ntsc7330	biological_process	17461798	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	VI	gene	2167467	2170632	+	NCU03931	Ntsc2579	biological_process	16801547	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	VI	gene	2412444	2417023	-	NCU04005	NoOrtho-NCU04005	biological_process	12917343	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	VII	gene	1002874	1007545	+	NCU09559	Ntsc6976	biological_process	12455969	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	VII	gene	2105240	2109312	-	NCU02460	NoOrtho-NCU02460	biological_process	14599895	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	VII	gene	2654598	2657461	-	NCU02393	NoOrtho-NCU02393	biological_process	15075265	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	VII	gene	3240259	3247655	-	NCU02234	NoOrtho-NCU02234	biological_process	18849472	IMP: Inferred from Mutant Phenotype
+GO:0048315	conidium formation	4.1901e-01	6.2425e-02	2.1324e-02	VII	gene	3625931	3627643	-	NCU08173	Ntsc7196	biological_process	22445960	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	I	gene	2113962	2118659	+	NCU01895	NoOrtho-NCU01895	biological_process	17392518	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	I	gene	3396655	3399210	-	NCU02743	Ntsc1275	biological_process	None	ISS: Inferred from Sequence or Structural Similarity
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	I	gene	4357383	4360841	+	NCU03055	Ntsc3416	biological_process	22961396	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	I	gene	4442191	4448082	-	NCU03071	Ntsc3407	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	I	gene	4847060	4850848	+	NCU03187	Ntsc1242	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	I	gene	5416503	5419355	+	NCU09123	NoOrtho-NCU09123	biological_process	21728141	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	I	gene	5815007	5820220	+	NCU09202	NoOrtho-NCU09202	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	I	gene	5853014	5856857	-	NCU09211	Ntsc3197	biological_process	22384347	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	I	gene	6070178	6072411	+	NCU07399	Ntsc3173	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	I	gene	6752091	6757105	-	NCU00914	NoOrtho-NCU00914	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	I	gene	7913654	7917043	+	NCU00587	NoOrtho-NCU00587	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	I	gene	8112407	8116828	-	NCU00528	Ntsc2824	biological_process	20601042	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	II	gene	498002	500940	+	NCU03491	Ntsc6650	biological_process	9578630	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	II	gene	2382699	2385687	-	NCU01797	Ntsc6360	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	II	gene	2512545	2516036	-	NCU01765	Ntsc6402	biological_process	11014810	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	II	gene	2588905	2591166	-	NCU01738	Ntsc6417	biological_process	17898858	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	II	gene	2607929	2611456	+	NCU01731	Ntsc8068	biological_process	17631397	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	II	gene	3855430	3859274	-	NCU08741	Ntsc6612	biological_process	20601042	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	III	gene	384222	386039	-	NCU05655	NoOrtho-NCU05655	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	III	gene	391094	393053	-	NCU05658	Ntsc6074	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	III	gene	1188639	1192368	-	NCU07872	Ntsc6010	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	III	gene	1614044	1617257	-	NCU06493	Ntsc5922	biological_process	8856670	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	III	gene	1804191	1808733	+	NCU06182	Ntsc5925	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	III	gene	2528710	2531908	-	NCU00076	NoOrtho-NCU00076	biological_process	20551436	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	III	gene	2933803	2939195	-	NCU00188	Ntsc5681	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	III	gene	3747790	3751837	+	NCU00406	Ntsc1995	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	IV	gene	1118725	1122244	-	NCU04990	Ntsc4846	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	IV	gene	1221932	1224013	-	NCU07958	Ntsc4849	biological_process	None	ISS: Inferred from Sequence or Structural Similarity
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	IV	gene	2592691	2598157	-	NCU08270	Ntsc5063	biological_process	18036854	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	IV	gene	3403117	3405014	+	NCU04426	Ntsc5147	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	IV	gene	4948586	4952179	-	NCU07024	Ntsc5415	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	IV	gene	5296170	5303095	+	NCU09915	NoOrtho-NCU09915	biological_process	20519745	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	IV	gene	5526379	5529412	-	NCU05268	Ntsc7994	biological_process	22961396	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	V	gene	1501026	1504190	-	NCU04612	NoOrtho-NCU04612	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	V	gene	1854769	1857178	-	NCU03616	NoOrtho-NCU03616	biological_process	None	ISS: Inferred from Sequence or Structural Similarity
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	V	gene	2223109	2227285	+	NCU03727	NoOrtho-NCU03727	biological_process	20601042	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	V	gene	3114809	3116475	-	NCU01169	Ntsc4273	biological_process	11014810	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	V	gene	3692753	3700051	-	NCU01335	Ntsc4361	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	V	gene	3977115	3980680	-	NCU01414	Ntsc1603	biological_process	8689677	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	V	gene	4073014	4078872	+	NCU06638	NoOrtho-NCU06638	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	V	gene	4267305	4272238	-	NCU06685	NoOrtho-NCU06685	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	V	gene	4812741	4815929	+	NCU04096	NoOrtho-NCU04096	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	V	gene	5253489	5257058	+	NCU04221	Ntsc4560	biological_process	None	ISS: Inferred from Sequence or Structural Similarity
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	V	gene	5336351	5338847	+	NCU04244	Ntsc4565	biological_process	14599895	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	V	gene	5359920	5364389	-	NCU04251	NoOrtho-NCU04251	biological_process	None	ISS: Inferred from Sequence or Structural Similarity
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	V	gene	5464383	5466903	+	NCU04275	Ntsc1662	biological_process	11129042	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	V	gene	5921173	5925111	+	NCU09842	Ntsc4694	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	V	gene	6354743	6358025	-	NCU07172	NoOrtho-NCU07172	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	VI	gene	653582	657867	+	NCU04747	Ntsc7621	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	VI	gene	2099470	2101485	+	NCU03901	Ntsc7330	biological_process	17461798	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	VI	gene	2544141	2546626	+	NCU04044	Ntsc7391	biological_process	11014810	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	VI	gene	2656057	2657861	+	NCU04074	Ntsc7414	biological_process	9520272	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	VI	gene	4097857	4099807	+	NCU05009	NoOrtho-NCU05009	biological_process	11014810	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	VII	gene	2654598	2657461	-	NCU02393	NoOrtho-NCU02393	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	VII	gene	2822821	2826123	-	NCU02348	Ntsc2363	biological_process	11016845	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	VII	gene	3063441	3066068	+	NCU02283	Ntsc7275	biological_process	21728141	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	VII	gene	3139434	3141963	+	NCU02263	Ntsc7270	biological_process	None	ISS: Inferred from Sequence or Structural Similarity
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	VII	gene	3200844	3206246	-	NCU02245	Ntsc7253	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	VII	gene	3240259	3247655	-	NCU02234	NoOrtho-NCU02234	biological_process	21965514	IMP: Inferred from Mutant Phenotype
+GO:0030437	ascospore formation	1.9158e-01	8.6312e-02	1.0524e-02	VII	gene	3908479	3911448	+	NCU05810	Ntsc7160	biological_process	None	ISS: Inferred from Sequence or Structural Similarity
