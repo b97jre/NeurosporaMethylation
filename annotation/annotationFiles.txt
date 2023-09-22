@@ -1,0 +1,21 @@
+Sample	TE	gene	contig	start
+L10_BA	references/TE2/L10BA_FGSC10707_TEs	references/gene/10707.maker-models.functional.all.withOrthoID.gff3	contig3	start3
+L10_sa	references/TE2/L10sa_FGSC10708_TEs	references/gene/10708.maker-models.functionalWithMat_a.all.withOrthoID.gff3	contig8	start8
+L1_BA	references/TE2/L1BA_9033_TEs	references/gene/9033.maker-models.functional.all.withOrthoID.gff3	contig1	start1
+L1_sa	references/TE2/L1sa_9034_TEs	references/gene/9034.maker-models.functionalWithMat_a.all.withOrthoID.gff3	contig6	start6
+L6_BA	references/TE2/L6BA_2508_TEs	references/gene/2508.all.withOrthoID.gff	contig2	start2
+L6_sa	references/TE2/L6sa_2509_TEs	references/gene/2509.all.withOrthoID.gff	contig7	start7
+sito_BA	references/TE2/sitoBA_5940_TEs	references/gene/5940_PB.maker-models.functional.all.withOrthoID.gff3	contig4	start4
+sito_sa	references/TE2/sitosa_5941_TEs	references/gene/5941_PB.maker-models.functionalWithMata.corrected.all.withOrthoID.gff3	contig9	start9
+crassa_BA	references/TE2/crassaBA_2489_TEs	references/gene/2489.all.withOrthoID.gff	contig5	start5
+crassa_sa	references/TE2/crassaBA_2489_TEs	references/gene/2489.all.withOrthoID.gff	contig10	start10
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				

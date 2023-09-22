@@ -1,0 +1,302 @@
+---
+title: "Methylation analysis"
+author: "Johan"
+date: "6/29/2021"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+    code_folding: hide
+    df_print: paged
+    
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+
+
+library(tidyverse)
+ 
+  rename = dplyr::rename
+  select = dplyr::select
+  summarise = dplyr::summarise
+  group_by = dplyr::group_by
+
+```
+
+
+# Load the data
+
+## Methylation data
+```{r}
+
+
+
+## Load annotation
+
+```{r AlignableSites}
+
+# Annotation
+annotationFiles =  "../../annotation/annotationFiles.txt" 
+annotationInfo = read_tsv(file = annotationFiles, col_names = T) %>%
+  mutate(annotationDir = "~/git/NeurosporaMethylation/") %>%
+  filter(!is.na(Sample))
+
+AnnotationList = list()
+for (i in 1:nrow(annotationInfo)){
+  AnnotationList[[annotationInfo$Sample[i]]] = getAnnotation(sample =annotationInfo$Sample[i],
+                annotationInfo = annotationInfo,
+                annotationDir = "~/git/NeurosporaMethylation/")
+}
+
+
+```
+
+
+```{r }
+
+# Methylated sites
+methylationDataInfo = data.frame(files = list.files(params$storageDir, pattern = ".4cov.keep0meth.meth0IFnotPval.methylated")) %>%
+  mutate(sample = gsub(".4cov.keep0meth.meth0IFnotPval.methylated", "",x = files)) %>%
+  separate(sample, into = c("species","tissue"),sep = "-") %>%
+  mutate(replicate = tissue) %>%
+  mutate(tissue = gsub("1", "",x = tissue)) %>%
+  mutate(tissue = gsub("2", "",x = tissue)) %>%
+  mutate(replicate = gsub("veg", "",x = replicate)) %>%
+  mutate(replicate = gsub("sex", "",x = replicate)) 
+
+methylationFile = read_delim(file = paste(params$storageDir,methylationDataInfo$files[1], sep = "/"),delim = " ", col_names = FALSE)
+
+annotateFile
+
+
+all.genomes.distribution.info = list()
+
+for(i in 1 : nrow(annotationInfo)){
+  methylation
+  all.genomes.distribution.info[[annotationInfo$Sample[i]]] =   getAnnotatedDistributions(
+    species =annotationInfo$Sample[i] ,
+    annotationInfo = annotationInfo,
+    files = files 
+    )  
+}
+
+  
+for(i in 1 : nrow(annotationInfo)){
+  getPairedDistributions(
+    species =annotationInfo$Sample[i] ,
+    files = files 
+  )  
+}
+
+```
+
+## Genome annotations
+```{r}
+
+
+
+
+
+```
+
+
+## Orthologus genes
+
+```{r orthoMCL}
+
+columns = cols(
+  orthoCluster = col_character(),
+  species = col_character(),
+  gene = col_character(),
+  length = col_double(),
+  InOrthoCluster = col_character(),
+  nrOfSpecies = col_double(),
+  nrOfGenesAll = col_double(),
+  meanLengthAll = col_double(),
+  AllSpecies = col_character(),
+  composition = col_character(),
+  nrOfGenesSpecies = col_double(),
+  meanLengthSpecies = col_character()
+)
+
+ortho = read_tsv("../../annotation/orthologs/finalOrthoMCLTable.tsv")
+
+ortho %>% filter(nrOfSpecies == 9) %>% filter(composition == "one2one") %>%
+  select(orthoCluster) %>% distinct() -> ortho.unique 
+
+ortho %>%  filter(species == "2489")%>% 
+  select(orthoCluster,gene,composition) %>%
+  separate_rows(gene, sep = ":") -> ortho2Gene
+
+
+ortho2Gene = ortho2Gene[grep(pattern = "-transcript",x =ortho2Gene$gene ), ] 
+ortho2Gene = ortho2Gene[grep(pattern = "NCU",x =ortho2Gene$gene ), ] 
+ortho2Gene = ortho2Gene[grep(pattern = "NCU",x =ortho2Gene$gene ), ] 
+ortho2Gene$gene = str_remove(ortho2Gene$gene, "-transcript")
+ortho2Gene = ortho2Gene %>% dplyr::rename(gene_id = "gene")
+
+
+
+
+
+
+```
+
+
+### RNAseq data
+
+```{r}
+files = list.files("../../data/RNA/featureCounts/")
+summaryFiles = files[grep(pattern = "summary", x = files)]
+
+summaryData = list()
+for(i in 1:length(summaryFiles)){
+  fcFileName = summaryFiles[i]
+  fcFile = paste("../../data/RNA/featureCounts", fcFileName, sep = "/")
+  fcData.species = read_tsv(file = fcFile, comment = "#")
+  fcData.species %>% gather(key = path,value = counts, -Status )-> summary.Data
+  summary.Data$Annotation = gsub(pattern = ".summary",replacement = "",fcFileName)
+  summary.Data %>% filter(Status %in% c("Assigned","Unassigned_Singleton","Unassigned_MultiMapping","Unassigned_NoFeatures","Unassigned_Ambiguity")) ->summary.Data
+  summaryData[[gsub(pattern = ".summary",replacement = "",fcFileName)]] =  summary.Data
+  
+}
+
+summaryData = bind_rows(summaryData)
+
+metaData = data.frame(path = unique(summaryData$path))
+
+
+metaData %>% separate(path,into = c("bamFiles","Species","filename"), sep = "/", remove = FALSE) -> metaData
+
+metaData %>% mutate(info = gsub(pattern = "_ribofiltered\\+trimmed_Aligned.sortedByCoord.out.bam", 
+                                replacement = "",
+                                x = filename)) ->
+  metaData
+
+metaData %>% separate(col = info, into = c("Sample","genome"), sep = "_vs.")  -> metaData
+metaData %>% 
+  mutate(Sample = gsub(pattern = "aaP",replacement = "BA_P", x = Sample)) %>%
+  mutate(Sample = gsub(pattern = "aP",replacement = "sa_P", x = Sample)) %>%
+  mutate(Sample = gsub(pattern = "crassa-BA",replacement = "crassa_BA", x = Sample))  %>% 
+  mutate(Sample = gsub(pattern = "crassa-sa",replacement = "crassa_sa", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "crassa-ap3",replacement = "crassa_sa_P3", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "L1BA",replacement = "L1_BA", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "L1sa",replacement = "L1_sa", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "L10BA",replacement = "L10_BA", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "L10sa",replacement = "L10_sa", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "L6BA",replacement = "L6_BA", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "L6sa",replacement = "L6_sa", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "L6BA",replacement = "L6_BA", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "L6sa",replacement = "L6_sa", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "L6BA",replacement = "L6_BA", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "Sito-BA",replacement = "sito_BA", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "Sito-sa",replacement = "sito_sa", x = Sample))  -> 
+  metaData2
+
+
+metaData2 %>% 
+  separate(col = Sample, into = c("species","type","sample","number"), sep = "_") %>%
+  mutate(tissue = ifelse(str_detect(sample, "sex"), "sex", "veg")) %>%
+  mutate(sample = gsub(pattern = "-sex",replacement = "", x = sample))  -> 
+  metaData2
+
+metaData2 %>% 
+    select(Species, species,type, sample,number,genome, tissue, path) %>%
+    rename(Annotation = "Species")%>%
+    dplyr::mutate(Species = paste(species, type, sep = "_")) %>%
+    select(Annotation, Species, sample,number,genome, tissue, path) %>%
+  filter(Annotation == Species) -> 
+  metaData2
+
+metaData2 %>%
+  inner_join(summaryData) ->
+  summaryData
+  
+
+summaryData %>% ggplot(mapping = aes(x = sample, y = counts, fill = Status )) +
+  geom_col(position = "Fill")+ facet_wrap(facets = c("Annotation","tissue"))
+  
+
+metaData2 %>% mutate(sampleID = paste(Species,sample,tissue, sep = "_")) %>%
+  select(sampleID,Annotation, Species, sample,number,genome, tissue, path) -> 
+  metaData2
+  
+write_tsv(x = metaData2, file = "../../data/RNA/metaData.tsv")
+
+
+```
+
+```{r}
+
+files = list.files("~/git/h_johannesson/results/RNA/featureCounts")
+fcFiles = files[-grep(pattern = "summary", x = files)]
+
+fcData = list()
+for(i in 1:length(fcFiles)){
+  fcFileName = fcFiles[i]
+  fcFile = paste("~/git/h_johannesson/results/RNA/featureCounts", fcFileName, sep = "/")
+  fcData.species = read_tsv(file = fcFile, comment = "#")
+  fcData.species %>% gather(key = path,value = counts, -Geneid,-Chr,-Start, -End, -Strand, -Length ) %>% 
+    filter(Geneid %in% ortho.unique$orthoCluster) ->fcData.species.ortho
+  fcData.species.ortho$Annotation = fcFileName
+  
+  fcData[[fcFileName]] =  fcData.species.ortho
+}
+
+
+library(stringr)
+
+fcData = bind_rows(fcData)
+
+## Including Plots
+
+
+metaData2 %>%inner_join(fcData) -> fcData.2
+
+fcData.2 %>% select(sampleID,Geneid,counts) %>%
+  spread(key = sampleID, value = counts)->
+  countMatrix 
+
+write_tsv(x = countMatrix, file = "~/git/NeurosporaMethylation/data/RNA/RNAcountMatrix.tsv")
+
+
+```
+
+```{r pressure, echo=FALSE}
+rownames(countMatrix) = countMatrix$Geneid
+
+countMatrix = countMatrix %>% select(-Geneid)
+rownames(metaData2) =  metaData2$sampleID
+countMatrix = countMatrix[,rownames(metaData2)]
+
+library(DESeq2)
+
+metaData2$tissue = as.factor(metaData2$tissue)
+metaData2$Species = as.factor(metaData2$Species)
+
+dds <- DESeqDataSetFromMatrix(countData = countMatrix,
+                               colData = metaData2,
+                               design = ~ Species + tissue)
+
+dds <- DESeq(dds)
+res <- results(dds) 
+res_df  = res%>% as.data.frame()
+
+  
+
+
+
+
+
+
+transformedData = vst(dds)
+plotPCA(transformedData, intgroup=c("tissue"))  
+
+plotPCA(transformedData, intgroup=c("Species"))  
+
+ 
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

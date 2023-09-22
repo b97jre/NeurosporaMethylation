@@ -1,0 +1,1108 @@
+---
+title: "Compare"
+author: "Johan"
+date: "10/24/2017"
+output: html_document
+
+
+
+params:
+  workingDir: /Users/johanreimegard/git/h_johannesson
+  storageDir: /Users/johanreimegard/storage/h_johannesson/results/sara/methylated
+  annotationFiles : references/annotationFiles.txt   
+  figure1cFile: /Users/johanreimegard/storage/h_johannesson/results/sara/figures/figure1/Figure1b.MethLevels.annotation.PerGenome.csv
+  mergedFile: /Users/johanreimegard/storage/h_johannesson/results/sara/liftover/pairwiseFiles/Ten.genomes.merged.tsv
+
+
+
+
+---
+
+```{r load packages and libraries, echo=FALSE}
+#install.packages("ggpubr")
+#install.packages("readr")
+
+library(tidyverse)
+
+library(GenomicFeatures)
+library(GGally)
+library(patchwork)
+
+
+library(RColorBrewer)
+
+gc()
+blues = brewer.pal(n = 11, name = "RdYlBu")
+
+annotationColor = c(blues[c(1,3,5,8:10)])
+  names(annotationColor) = c("TE","Intergenic","Intron","5UTR","CDS","3UTR")
+source("../methylationFunctions.R")
+```
+
+
+
+
+
+  
+```{r getAnnotatedDistributions}
+
+getAnnotatedDistributions <- function(species = "crassa_BA", 
+                                      alingedSequences = allGenomes,
+                                      files = files, 
+                                      annotationInfo = annotationInfo){
+
+    
+### All C and Genome Annotation
+  annotation = getAnnotation(sample = species, annotationInfo = annotationInfo, annotationDir = "~/git/h_johannesson")
+  
+  genomeInfo =   annotation$distribution%>% 
+    mutate(Sites ="Genome" ) %>%
+    mutate(state ="Both" ) 
+    
+  
+### All Alligned annotated
+  sites.alligned <- getSequence(alingedSequences = alingedSequences,
+                                annotationInfo = annotationInfo,
+                                sample = species
+  )
+
+  sites.aligned.annotated = annotateSites(methylationSites = sites.alligned, 
+                                          annotation = annotation)  %>% dplyr::select(Chr, Position, annotation)
+  
+
+  
+  AlignedInfo = sites.aligned.annotated %>%  
+    dplyr::select(Chr, Position, annotation) %>%
+    distinct() %>%
+    group_by(annotation) %>%
+    summarise(nrOfNucleoties = n()) %>%
+    mutate(Sites ="Aligned C" ) %>%
+    mutate(state ="Both" ) 
+
+  
+  
+### All methylated 
+  
+  methyaled.sites =  getDistribution(files = files ,  
+                                   pattern = species,methylatedFileDir = params$storageDir)
+
+  sites.methyaled.annotated = annotateSites(methylationSites =methyaled.sites ,annotation = annotation )
+
+    sites.methyaled.annotated.min = sites.methyaled.annotated %>%
+     dplyr::select(Chr,Position,annotation) %>% distinct() 
+  methyaled.sites.annotated = inner_join( sites.methyaled.annotated.min, methyaled.sites)
+
+  # genomeMethyaledSitesFile = paste(params$storageDir,
+  #                               paste(species,"annotated.tsv", sep = "."),
+  #                               sep = "/")
+  #write_tsv(x = methyaled.sites.annotated , file = genomeMethyaledSitesFile,
+  #          col_names = TRUE)
+  
+  methyaled.sites.annotated.summary = methyaled.sites.annotated %>% 
+    filter(counts > 4) %>%
+    group_by(annotation, sample) %>%
+    summarise(meanFraction = mean(fraction), numberOfC = n(), methylated = sum(pValue<0.05))
+  
+  methylationPercentageDistributionFile = paste(params$storageDir,
+                               paste(species,"figureS2.tsv", sep = "."),
+                               sep = "/")
+
+  write_tsv(x = methyaled.sites.annotated.summary,
+            file =  methylationPercentageDistributionFile)
+  
+  
+  
+  methyaled.sites.annotated.sex = methyaled.sites.annotated %>%  
+    filter(str_detect(string = sample, pattern = "sex")) %>%
+    mutate(state = "sex")
+  #  plotMethylationDistribution (methylationPattern = methyaled.sites.annotated.sex, 
+  #                            pattern = paste(species,"sex",sep = "." ))
+  
+  
+  methyaled.sites.annotated.veg = methyaled.sites.annotated %>%  
+    filter(str_detect(string = sample, pattern = "veg"))%>%
+    mutate(state = "veg")
+   #plotMethylationDistribution (methylationPattern = methyaled.sites.annotated.veg, 
+  #                             pattern = paste(species,"veg",sep = "." ))
+
+  
+  methyaled.sites.annotated = bind_rows(methyaled.sites.annotated.sex,methyaled.sites.annotated.veg)  
+  methyaled.sites.annotated %>% 
+    mutate(replicate = 1) %>%
+    mutate(replicate=replace(replicate, str_detect(sample, "sex2"), 2))  %>%
+    mutate(replicate=replace(replicate, str_detect(sample, "veg2"), 2))  %>%
+    mutate(species=species) ->
+      methyaled.sites.annotated.2
+  
+methyaled.sites.annotated.2 %>% dplyr::select(Chr, Position, species,state,replicate,fraction, ) %>%
+  spread(key = replicate, value = fraction, fill = 0) ->
+  methyaled.sites.annotated.2 
+
+
+  supplementaryFigure1DataDir = "~/storage/h_johannesson/results/sara/figures/suppFigure1" 
+ supplementaryFigure1Datafile = paste(supplementaryFigure1DataDir, 
+                                      paste(species,"methylationLevel.pairs.tsv", sep = "."), sep = "/")
+ 
+ write_tsv(x = methyaled.sites.annotated.2, file = supplementaryFigure1Datafile)
+
+ methylatedInfo = methyaled.sites.annotated %>%
+    filter(pValue<0.05) %>% 
+    dplyr::select(Chr, Position, annotation,state) %>%
+    distinct() %>%
+    group_by(annotation,state) %>%
+    summarise(nrOfNucleoties = n()) %>%
+    mutate(Sites ="Methylated C" )
+  
+    
+  
+
+### All methylated and aligned
+  
+  sites.methyaled.aligned.annotated = inner_join(methyaled.sites, sites.aligned.annotated) %>%
+    dplyr::select(Chr,Position,annotation,pValue, fraction, sample)
+
+  
+    sites.methyaled.aligned.annotated.sex = sites.methyaled.aligned.annotated %>%  
+    filter(str_detect(string = sample, pattern = "sex")) %>%
+    mutate(state = "sex")
+  #  plotMethylationDistribution (methylationPattern = methyaled.sites.annotated.sex, 
+  #                            pattern = paste(species,"sex",sep = "." ))
+  
+  
+  sites.methyaled.aligned.annotated.veg = sites.methyaled.aligned.annotated %>%  
+    filter(str_detect(string = sample, pattern = "veg"))%>%
+    mutate(state = "veg")
+
+  
+  sites.methyaled.aligned.annotated = bind_rows(sites.methyaled.aligned.annotated.sex,sites.methyaled.aligned.annotated.veg)  
+
+    
+  methylated.aligned.Info = sites.methyaled.aligned.annotated %>% 
+    filter(pValue<0.05) %>% 
+    dplyr::select(Chr, Position, annotation,state) %>%
+    distinct() %>%
+    group_by(annotation,state) %>%
+    summarise(nrOfNucleoties = n()) %>%
+    mutate(Sites ="Aligned & Methylated C" )
+
+    
+  
+  
+
+  AnnotatedSiteDistribution = bind_rows(genomeInfo,AlignedInfo,methylatedInfo,methylated.aligned.Info) %>%
+    mutate(species = species)
+
+  
+  genomeMethyaledSitesFile = paste(params$storageDir,
+                               paste(species,"methylated.aligned.tsv", sep = "."),
+                               sep = "/")
+  write_tsv(x = sites.methyaled.aligned.annotated , file = genomeMethyaledSitesFile, col_names = TRUE)
+  
+    return(AnnotatedSiteDistribution)
+}
+
+
+```
+
+
+```{r }
+
+getPairedDistributions <- function(species = "crassa_BA", 
+                                      files = files){
+### All methylated 
+  
+  methyaled.sites =  getDistribution(files = files ,  
+                                   pattern = species,methylatedFileDir = params$storageDir)
+
+  methyaled.sites %>% 
+    mutate(state = "veg") %>%
+    mutate(state=replace(state, str_detect(sample, "sex"), "sex"))  %>%
+    mutate(replicate = 1) %>%
+    mutate(replicate=replace(replicate, str_detect(sample, "sex2"), 2))  %>%
+    mutate(replicate=replace(replicate, str_detect(sample, "veg2"), 2))  %>%
+    mutate(species=species) %>%
+    dplyr::select(Chr, Position, species,state,replicate,fraction) %>%
+  spread(key = replicate, value = fraction, fill = 0) ->
+  methyaled.sites.2
+
+  supplementaryFigure1DataDir = "~/storage/h_johannesson/results/sara/figures/suppFigure1" 
+  supplementaryFigure1Datafile = paste(supplementaryFigure1DataDir, 
+                                      paste(species,"methylationLevel.pairs.tsv", sep = "."), sep = "/")
+ 
+ write_tsv(x = methyaled.sites.2, file = supplementaryFigure1Datafile)
+
+}
+
+
+```
+
+
+
+# Annotation
+
+
+## Load annotation
+
+```{r AlignableSites}
+
+# Annotation
+read_tsv(file = "../../annotation/annotationFiles.txt", col_names = T)  %>%
+  filter(!is.na(Sample )) %>% 
+  separate(col = Sample,into = c("genome","type"))%>%
+  mutate(type = toupper(type)) ->
+annotationInfo 
+
+annotationInfo
+
+
+
+```
+
+### Get transcript 2 gene annotation in crassa
+
+
+```{r}
+  
+annotations =   getAnnotation(SampleName = "crassa-BA-sex",
+                annotationInfo = annotationInfo,
+                annotationDir = "~/git/NeurosporaMethylation/")
+
+test.geneID = annotations$transcripts$gene_id
+test.tx_name = annotations$transcripts$tx_name
+
+gene2transcript = data.frame(tx_name = test.tx_name,
+                             geneID = as.character(test.geneID)) %>%
+  filter(!is.na(geneID) )
+
+species.transcripts.diff %>% inner_join(gene2transcript) -> 
+  species.transcripts.diff
+
+species.transcripts.diff %>%
+  dplyr::select(geneID,genome,type, 
+                TEdistance, sex, veg,diff,geneID ) %>%
+  pivot_longer(cols = c("sex","veg","diff"), names_to = "Type2", values_to = "methValues") ->
+  methylationLevels
+  
+
+
+```
+
+## get MethylationFiles
+
+```{r AlignableSites}
+
+# Annotation
+
+data.frame(methDir = "../../data/methylation/mergedRepCoverage/",
+                       methFile = list.files("../../data/methylation/mergedRepCoverage/")) %>%
+  mutate(sample = gsub(pattern = ".meth.mergedRep",replacement = "", x = methFile)) %>%
+  mutate(sample = gsub(pattern = "BA-",replacement = "-BA-", x = sample)) %>%
+  mutate(sample = gsub(pattern = "--",replacement = "-", x = sample)) %>%
+  mutate(sample = gsub(pattern = "0sa-",replacement = "0-sa-", x = sample)) %>%
+  mutate(sample = gsub(pattern = "1sa-",replacement = "1-sa-", x = sample)) %>%
+  mutate(sample = gsub(pattern = "6sa-",replacement = "6-sa-", x = sample))  %>%
+  separate(col = sample, into = c("genome","type","tissue"), remove = FALSE) %>%
+  mutate(type = toupper(type)) %>%
+  filter(!grepl(pattern = ".annotated.csv", x = methFile) )->
+  methFiles
+  
+methFiles %>% inner_join(annotationInfo) -> annotationInfo
+
+
+annotationInfo %>% 
+  mutate(methPath = paste(methDir, methFile, sep = "/")) ->
+  annotationInfo
+
+
+
+
+```
+
+
+## Aligned regions 
+```{r} 
+allGenomes = read_tsv( file = params$mergedFile, col_names = TRUE)
+```
+# Methylation analysis
+## Annotate methylation
+
+
+
+```{r }
+
+i = 2
+for(i in 2:nrow(annotationInfo)){
+  sample = annotationInfo$sample[[i]]
+  testFile = annotationInfo$methPath[i]
+  annotatedFile = paste(testFile,"annotated.csv", sep = ".")
+  
+  if(!file.exists(annotatedFile)){
+    #get annotation
+    annotation = getAnnotation(SampleName =  sample,
+                                annotationInfo = annotationInfo,
+                               annotationDir = "~/git/NeurosporaMethylation/")
+    
+    
+    #get methylation
+    methylationPattern = read_tsv(file = testFile, col_names = c("Chr","Position","Dir","Type", "Fraction","Coverage"))
+    
+    # annotate methylation sites
+    annotaionMethSites = annotateSites(methylationSites = methylationPattern, annotation = annotation)
+ 
+    # merge methylation and annotation    
+    methylationPattern.annotated =  inner_join(methylationPattern,annotaionMethSites)
+    
+    write_csv(x = methylationPattern.annotated, file = annotatedFile)
+  }
+}
+
+
+
+
+
+```
+
+# Gene comparisons
+```{r}
+
+annotationInfo %>% distinct(genome,type) ->
+  comparisons
+
+
+i = 1
+for(i in 1:nrow(comparisons)){
+  comparison = comparisons[i,]
+  annnotationInfo.comp = inner_join(annotationInfo, comparison)
+  tissues = c("sex","veg")
+  #Tissue = tissues[1]
+  for(Tissue in tissues){
+    
+    annnotationInfo.comp %>%
+      filter(tissue == Tissue)->
+      annnotationInfo.comp.tissue
+    Sample = annnotationInfo.comp.tissue$sample[[1]]
+    annotationInfo %>%
+      dplyr::filter(sample %in% Sample) %>%
+      dplyr::select(sample,genome,type,tissue) ->
+      sampleInfo
+    annotatedFile = paste(annnotationInfo.comp.tissue$methPath[[1]],"annotated.csv", sep = ".")
+    transcriptFile = paste("../../data/methylation/geneLevels",
+                           paste(Sample,"transcript.csv", sep = "."),sep = "/")
+    if(!file.exists(transcriptFile)){
+      
+      
+      methylationPattern.annotated = read_csv( file = annotatedFile)
+      
+      methylationPattern.annotated %>%
+        filter(!is.na(tx_name)) %>%
+        dplyr::select(Chr,Position,Dir,Type, Fraction,Coverage,tx_name,TEdistance) ->
+        transcript.info
+      
+      
+      transcript.info %>%
+        mutate(methylated = round(Coverage*Fraction))  %>%
+        group_by(tx_name) %>%
+        summarise(n = n(),Coverage = sum(Coverage), Methylated = sum (methylated)) %>%
+        mutate(Fraction = Methylated / Coverage) ->
+        transcript.info.summary
+      
+      transcript.info.summary %>% 
+        filter(n > 100 & Coverage/n > 10 ) ->
+        transcript.info.summary
+      
+      
+      
+      transcript.info %>% 
+        dplyr::select(TEdistance,tx_name ) %>%
+        group_by(tx_name) %>%
+        summarise(TEdistance  = min(TEdistance)) %>%
+        inner_join(transcript.info.summary) ->
+        transcript.info.summary.methylated 
+      
+      
+      transcript.info.summary.methylated %>%
+        filter(!is.na(Fraction)) %>%
+        summarise(mean = mean(Fraction), sd = sd(Fraction)) %>%
+        bind_cols(sampleInfo)  %>%
+        bind_cols(transcript.info.summary.methylated) %>%
+        mutate(zscore = (Fraction -mean)/sd) %>%
+        arrange(-zscore) ->
+        transcript.info.summary.methylated 
+      
+      transcript.info.summary.methylated %>%
+        dplyr::select(genome, type, tissue, tx_name,TEdistance,n,Coverage,Methylated,Fraction,zscore)->
+        transcript.info.summary.methylated
+      
+      write_csv(x = transcript.info.summary.methylated, 
+                file =  transcriptFile)
+    }  
+  }
+}
+
+
+
+
+```
+
+#
+```{r}
+
+for(i in 1:nrow(comparisons)){
+  comparison = comparisons[i,]
+  annnotationInfo.comp = inner_join(annotationInfo, comparison)
+  tissues = c("sex","veg")
+  #Tissue = tissues[1]
+  
+  species.transcripts.list = list()
+  for(Tissue in tissues){
+    
+    annnotationInfo.comp %>%
+      filter(tissue == Tissue)->
+      annnotationInfo.comp.tissue
+    Sample = annnotationInfo.comp.tissue$sample[[1]]
+    annotationInfo %>%
+      dplyr::filter(sample %in% Sample) %>%
+      dplyr::select(sample,genome,type,tissue) ->
+      sampleInfo
+    transcriptFile = paste("../../data/methylation/geneLevels",
+                           paste(Sample,"transcript.csv", sep = "."),sep = "/")
+
+    species.transcripts.list[[Tissue]]= read_csv( file =  transcriptFile)
+  }
+  species.transcripts = bind_rows(species.transcripts.list)
+```
+
+## Including all transcripts
+```{r}
+  species.transcripts %>%
+    group_by(tx_name) %>%
+    summarise(nrOfTissues = n()) %>%
+    filter(nrOfTissues == 2) %>%
+    inner_join(species.transcripts) %>%
+    dplyr::select(tx_name, genome, type, tissue, TEdistance,zscore) %>%
+    pivot_wider(names_from = "tissue",values_from = "zscore") %>%
+    mutate(diff = sex-veg) ->
+    species.transcripts.diff
+  
+  
+  
+  species.transcripts.diff %>%
+    ggplot(aes(sex)) + geom_density() 
+  
+annotations =   getAnnotation(SampleName = "crassa-BA-sex",
+                annotationInfo = annotationInfo,
+                annotationDir = "~/git/NeurosporaMethylation/")
+
+test.geneID = annotations$transcripts$gene_id
+test.tx_name = annotations$transcripts$tx_name
+
+gene2transcript = data.frame(tx_name = test.tx_name,
+                             geneID = as.character(test.geneID)) %>%
+  filter(!is.na(geneID) )
+
+species.transcripts.diff %>% inner_join(gene2transcript) -> 
+  species.transcripts.diff
+
+species.transcripts.diff %>%
+  dplyr::select(geneID,genome,type, 
+                TEdistance, sex, veg,diff,geneID ) %>%
+  pivot_longer(cols = c("sex","veg","diff"), names_to = "Type2", values_to = "methValues") ->
+  methylationLevels
+
+
+  
+
+methylationLevels %>% 
+  ggplot(aes(x = methValues, color = Type2)) + geom_density() +
+  xlim(-4,4) 
+
+
+methylationLevels %>%
+  mutate(TEvicinity = "FALSE") %>%
+  mutate(TEvicinity = replace(TEvicinity ,TEdistance < 1, "TRUE")) %>%
+  ggplot(aes(x = methValues, color = TEvicinity)) + geom_density() +
+    facet_wrap(.~Type2, ncol =1 )  +
+  xlim(-4,4) 
+
+
+species.transcripts.diff %>% arrange(-sex)
+
+```
+
+## Including only ortholog genes
+```{r}
+species.transcripts %>%
+  inner_join(gene2transcript) ->
+  species.transcripts
+
+ortho2Gene %>%
+  filter(composition == "one2one")%>%
+  rename(geneID = "gene_id") %>%
+  inner_join(species.transcripts)->
+  species.transcripts
+  
+
+
+
+  species.transcripts %>%
+    group_by(orthoCluster) %>%
+    summarise(nrOfTissues = n()) %>%
+    filter(nrOfTissues == 2) %>%
+    inner_join(species.transcripts) %>%
+    dplyr::select(orthoCluster, genome, type, tissue, TEdistance,Fraction) ->
+    species.transcripts
+  
+  species.transcripts %>%
+    filter(TEdistance > 500) %>%
+    group_by(tissue) %>%
+    summarise(mean = mean(Fraction),
+              sd = sd(Fraction)) %>%
+    inner_join(species.transcripts) %>%
+    mutate(zscore= (Fraction-mean)/ sd) %>%
+    filter(TEdistance > 500) %>%
+    select(orthoCluster, genome, type, tissue, TEdistance,zscore) %>%
+    pivot_wider(names_from = "tissue",values_from = "zscore") %>%
+    mutate(diff = sex-veg) ->
+    species.transcripts.diff.ortho
+  
+  species.transcripts.diff.ortho %>%
+    arrange(-abs(diff)) 
+  
+species.transcripts.diff.ortho %>%
+  dplyr::select(orthoCluster,genome,type, 
+                TEdistance, sex, veg,diff ) %>%
+  pivot_longer(cols = c("sex","veg","diff"), names_to = "Type2", values_to = "methValues") ->
+  methylationLevels.ortho
+
+
+
+
+methylationLevels.ortho %>% 
+  ggplot(aes(x = methValues, color = Type2)) + geom_density() +
+  xlim(-4,4) 
+
+ggsave("../../results/methylation/normalisedDistribution.methylation.crassa_BA.pdf")
+  
+```
+  
+  
+
+for(i in 1 : nrow(annotationInfo)){
+  getPairedDistributions(
+    species =annotationInfo$Sample[i] ,
+    files = files 
+  )  
+}
+  
+  
+
+  
+
+all.genomes.distribution.df = bind_rows(all.genomes.distribution.info)
+
+write_csv(x =all.genomes.distribution.df, file = params$figure1cFile, col_names = T)
+all.genomes.distribution.df= read_csv( file = params$figure1cFile, col_names = T)
+
+all.genomes.distribution.df$Sites = factor(all.genomes.distribution.df$Sites, levels = c("Genome","Methylated C","Aligned C", "Aligned & Methylated C"))
+all.genomes.distribution.df$annotation = factor(all.genomes.distribution.df$annotation, levels = c("TE","Intergenic","Intron", "5UTR","CDS","3UTR"))
+all.genomes.distribution.df$species = factor(all.genomes.distribution.df$species, 
+                                             levels =unique(all.genomes.distribution.df$species))
+
+   DistributionPlot = ggplot( all.genomes.distribution.df, mapping = aes(x = Sites, y = nrOfNucleoties, fill = annotation)) +
+     geom_col(position="fill", ) +facet_wrap(~species, nrow = 1) +scale_fill_manual(values=annotationColor) + xlab ( label = "Sites") + ylab(label = "Fraction of assigned nts") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+   
+
+countPlot = ggplot( all.genomes.distribution.df, mapping = aes(x = Sites, y = nrOfNucleoties, fill = annotation)) +
+     geom_col( ) +facet_wrap(~species) +scale_fill_manual(values=annotationColor) + xlab ( label = "Sites") + ylab(label = "Fraction of assigned nts") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+ 
+     
+     
+  CountPlot = ggplot( distribution, mapping = aes(x = Sites, y = nrOfNucleoties, fill = annotation)) + geom_col( )
+  
+  +
+     xlab( label = "Sites") + ylab(label = "Number of assigned nts") +
+    theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank()) +
+    scale_fill_manual(values=annotationColor) 
+  
+  
+  
+  CountPlot /DistributionPlot
+    ggsave(filename = paste("/Users/johanreimegard/storage/h_johannesson/results/sara/methylated",
+                          paste(pattern,
+                          "methylation.distribution.pdf", sep = "."),
+                          sep = "/"))
+
+
+
+ggplot(all.genomes.distribution.df, aes(x = Sites, y = nrOfNucleoties, color = annotation ))
+
+## genome
+```
+
+
+
+### All Methylated
+
+
+```
+## crassa BA
+
+```{r load liftoverFiles, merge them and save them to file, include=FALSE}
+
+
+
+
+  methylationPattern.aligned.annotated = inner_join(methylationPattern2, allGenomes.species.annotated)
+  
+  methylationPattern.aligned.methylated.annotated.single = methylationPattern.aligned.annotated %>%
+    dplyr::select(Chr,Position,annotation) %>% 
+    distinct()
+  
+  
+  sampleFile = paste(params$storageDir, 
+                    paste(pattern,"methylated.sites.annotated.tsv", sep = "."),
+                    sep = "/")
+
+  
+  methylationPattern.aligned.annotated
+  GenomeAnnotation$Sites = "Genome"
+  
+
+  
+  
+  
+  distribution$annotation = factor(x = distribution$annotation, levels = c("3UTR","CDS","5UTR","Intron","Intergenic","TE"))
+  distribution$Sites = factor(x = distribution$Sites, levels = c("Genome","Methylated C","Aligned C","Aligned & Methylated C"))
+ 
+  
+  
+  
+    
+  
+}
+
+```
+
+
+  
+  
+  
+zz=gzfile('file.csv.gz','rt')  
+dat=read.csv(zz,header=F)
+
+
+
+if(!file.exists(paste(params$storageDir,params$internalStorageDir,params$mergedOutputFile, sep = "/"))){
+  
+  # read in files using readr package 
+  comp1_2 = read_tsv(
+    file = paste(params$storageDir,params$internalStorageDir,params$comparisonFile1, sep = "/"),
+    col_names = FALSE)
+  comp2_2 = read_tsv(file = paste(
+    params$storageDir,params$internalStorageDir,params$comparisonFile2, 
+    sep = "/"), col_names = FALSE )
+  
+  
+  
+  head(comp1_2)
+  nrOfColumns1 = nrow(comp1_2)
+  nrOfColumns2 = nrow(comp2_2)
+  
+  #Splitting up target info 
+  to = colsplit(comp1_2$X4, split = ":", names = c("contig2","start2","stop2","dir2"))
+  to2 = colsplit(comp2_2$X4, split = ":", names = c("contig2","start2","stop2","dir2"))
+  
+  
+  
+  #add them back
+  compare1 = cbind(comp1_2, to)
+  compare2 = cbind(comp2_2, to2)
+  
+  compare1 = compare1[,c(1,2,3,6,7,8,9,10)]
+  compare2 =  compare2[,c(1,2,3,6,7,8,9,10)]
+
+  
+  colnames(compare1) <- c("contig1","start1","stop1","dir1","contig2","start2","stop2","dir2" )
+  colnames(compare2) <- c("contig2","start2","stop2","dir2","contig1","start1","stop1","dir1" )
+  
+  
+  
+  
+  rm(comp2_2,comp1_2,to,to2)
+  theSame = merge(compare1, compare2, by = c("contig1","start1","contig2","start2"), all = FALSE)
+  
+  theSame = theSame[, c("contig1","start1","stop1.x","dir1.x","contig2","start2","stop2.x","dir2.x")]
+  colnames(theSame) = c("contig1","start1","stop1","dir1","contig2","start2","stop2","dir2")
+  theSame
+  
+  write_delim(x = theSame,
+              path =  paste(params$storageDir,params$internalStorageDir,params$mergedOutputFile, sep = "/"),
+              delim = "\t", 
+              col_names = TRUE
+  )
+  
+  
+  
+  
+  
+}
+```
+
+
+```{r read the merged file if it already exist}
+
+if(file.exists(paste(params$storageDir,params$internalStorageDir,params$mergedOutputFile, sep = "/"))){
+  theSame = read_tsv(file = paste(params$storageDir,params$internalStorageDir,params$mergedOutputFile, sep = "/"), col_names = TRUE)
+}
+
+```
+
+
+
+
+## and plotting the distributions. 
+
+
+## Check how the aligned nt are distributed between the two 
+```{r mergeLiftOverFiles}
+
+#How many nt are the same
+identicalRows = nrow(theSame)
+
+#How many of one contig of A  are found in one contig of B
+agg = aggregate(theSame$contig1 , by = list(theSame$contig2) , summary)
+distribtionOfContigs = agg$x
+rownames(distribtionOfContigs) = agg$Group.1
+
+ViewableContigs = distribtionOfContigs[, ]
+#Only keep contigs that has more than a set of nt mapped to it. 
+ViewableContigs = ViewableContigs[rowSums(ViewableContigs)> params$nrOfMappedNts,
+                                  colSums(ViewableContigs)> params$nrOfMappedNts]
+viewableContigsDF = melt(ViewableContigs)
+
+
+
+base_size = 8
+(p <- ggplot(viewableContigsDF, aes(X2, X1)) + 
+    geom_tile(aes(fill = log(value)),colour = "white") +
+    scale_fill_gradient(low = "white",high = "steelblue")+ 
+    theme_grey(base_size = base_size) + labs(x = "", y = "") +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1)))
+#pdf("KeptAlignmentHeatMap.pdf")
+#heatmap(testKeepBig)
+#dev.off()
+
+
+
+
+```
+
+```{r plot C distribution 1}
+
+
+wiewAble = theSame[theSame$contig1 %in% levels(viewableContigsDF$X2), ]
+ggplot(data = wiewAble, mapping =aes(start1))+ geom_density(adjust = 1/5) + facet_grid(contig1 ~ . ,scales = ("free")) + theme(strip.text.y = element_text(angle = 0))
+
+
+#wiewAble2 = wiewAble[wiewAble$contig1 == "NEUTE1scaffold_1" & wiewAble$start1 > 1160000 & wiewAble$start1 <1170000, ]
+
+#ggplot(data = wiewAble2, mapping =aes(start1))+ geom_density(adjust = 1/10)
+
+
+```
+```{r plot C distribution 2}
+
+
+wiewAble = theSame[theSame$contig2 %in% levels(viewableContigsDF$X1), ]
+
+ggplot(data = wiewAble, mapping =aes(start2))+ geom_density(adjust = 1/5) + facet_grid(contig2 ~ . ,scales = ("free")) + theme(strip.text.y = element_text(angle = 0))
+
+```
+
+## Including methylation data
+
+
+```{r load methylation files, echo=TRUE}
+
+classes <- c("character","numeric","character","character","numeric","numeric")
+methInfo1 = read_delim(file = paste(params$storageDir,params$internalStorageDir,params$methylationDistributionFile1, sep = "/"), col_names = FALSE,delim ="\t")
+
+colnames(methInfo1) <- c("contig1","start1","sc","type1", "methRate1","readCount1")
+methInfo1 = methInfo1[, c("contig1","start1","type1", "methRate1","readCount1")]
+# remove all C that does not have at least 4 reads mapping to them and at least one methylated C
+methInfo1 = methInfo1[methInfo1$readCount1 >= params$nrOfMappedReads & methInfo1$methRate1 >params$fractionOfMethylatedC ,  ]
+
+
+combinedMethInfo = merge(theSame, methInfo1, by = c("contig1","start1"), all = TRUE)
+
+combinedMethInfo$stop1[which(is.na(combinedMethInfo$start2))] = 
+  combinedMethInfo$start1[which(is.na(combinedMethInfo$start2))]+1
+combinedMethInfo$dir1[which(is.na(combinedMethInfo$start2))] = "*" 
+
+methInfo2 = read_delim(file = paste(params$storageDir,params$internalStorageDir, params$methylationDistributionFile2, sep  = "/"), delim = "\t",  col_names = FALSE)
+
+colnames(methInfo2) <- c("contig2","start2","sc","type2", "methRate2","readCount2")
+methInfo2 = methInfo2[, c("contig2","start2","type2", "methRate2","readCount2")]
+methInfo2 = methInfo2[methInfo2$readCount2 >= params$nrOfMappedReads & methInfo2$methRate2 > params$fractionOfMethylatedC ,  ]
+
+
+combinedMethInfoBoth = merge(combinedMethInfo, methInfo2, by = c("contig2","start2"), all = TRUE)
+
+# remove all rows that does not contain any Cmeth info from genome 2
+
+CMIB = combinedMethInfoBoth
+
+#which(is.na(CMIB$type2)) 
+
+CMIB$stop2[which(is.na(CMIB$start1))] = 
+  CMIB$start2[which(is.na(CMIB$start1))]+1
+CMIB$dir2 = as.character(CMIB$dir2)
+CMIB$dir2[which(is.na(CMIB$start1))] = "*" 
+
+CMIB = CMIB[, c("contig1", "start1", "stop1","dir1",
+                "contig2", "start2", "stop2","dir2",
+                "type1","methRate1","readCount1",
+                "type2","methRate2","readCount2")]
+
+#write_tsv(x = combinedMethInfoBoth, path = paste(params$storageDir,params$internalStorageDir, params$mergedOutputFile, sep  = "/"),col_names = TRUE)
+
+
+rm(combinedMethInfoBoth, combinedMethInfo, theSame)
+
+
+
+CMIB$MethC = "None"
+CMIB$MethC[ which(!is.na(CMIB$methRate1))] = "MethC1"
+CMIB$MethC[ which(!is.na(CMIB$methRate2))] = "MethC2"
+CMIB$MethC[ intersect(which(!is.na(CMIB$methRate1)) , which(!is.na(CMIB$methRate2)))] = "MethC 1 & 2"
+
+CMIB = CMIB[CMIB$MethC != "None", ]
+
+
+
+```
+
+
+
+```{r plot the combined methylated C distribution }
+
+wiewAble = CMIB[CMIB$contig1 %in% levels(viewableContigsDF$X2), ]
+
+ggplot(wiewAble, aes(MethC))+ 
+  geom_bar()+ 
+  facet_grid(contig1~., scales = ("free_y")) + 
+  theme(strip.text.y = element_text(angle = 0))
+
+
+```
+
+```{r plot the combined methylated C distribution 2}
+
+wiewAble = CMIB[CMIB$contig2 %in% levels(viewableContigsDF$X1), ]
+
+ggplot(wiewAble, aes(MethC))+ 
+  geom_bar()+ 
+  facet_grid(contig2~., scales = ("free_y")) + 
+  theme(strip.text.y = element_text(angle = 0))
+
+```
+
+
+
+```{r Loading the  hyperMethylatedPart}
+methPipeInfo1 = read_delim(paste(params$storageDir,params$internalStorageDir,params$methPipeInfo1,sep = "/"), delim = "\t",col_names = FALSE,trim_ws = TRUE)
+colnames(methPipeInfo1) = c("chr", "start","end","Score","Score2", "strand")
+methPipeInfo1$ID = paste(methPipeInfo1$chr, methPipeInfo1$start, sep = "_")
+methPipeInfo1$strand = "*"
+dim(methPipeInfo1)
+
+
+methPipeInfo2 = read_delim(paste(params$storageDir,params$internalStorageDir,params$methPipeInfo2,sep = "/"), delim = "\t",col_names = FALSE,trim_ws = TRUE)
+colnames(methPipeInfo2) = c("chr", "start","end","Score","Score2", "strand")
+methPipeInfo2$ID = paste(methPipeInfo2$chr, methPipeInfo2$start, sep = "_") 
+methPipeInfo2$strand = "*"
+dim(methPipeInfo2)
+
+```
+
+
+```{r Find overlap between the alignment file and the methpipe hyper info}
+
+#Using the genomic range library to find the overlap
+
+
+
+mapOverlaps <- function(Grange1,Grange1Full ){
+  overlap1 = findOverlaps(Grange1,Grange1Full)
+  methPipe1 = data.frame(Grange1)
+  align1 = data.frame(Grange1Full)
+  overlap1DF = data.frame(overlap1)
+  dim(overlap1DF)
+  unique(overlap1DF$queryHits)
+  names(Grange1)
+  
+  methPipe1$ID = paste(methPipe1$seqnames,methPipe1$start, sep = "_")
+  align1$ID = paste(align1$seqnames,align1$start, sep = "_")
+  
+  overlap1DF$MethPipeID = methPipe1$ID[overlap1DF$queryHits]
+  overlap1DF$AlignID = align1$ID[overlap1DF$subjectHits]
+  overlap1DF = overlap1DF[, c("MethPipeID","AlignID")]
+  
+  return (overlap1DF)
+  
+}
+
+#Making Grange lists of the methylation data
+Grange1 = makeGRangesListFromDataFrame(methPipeInfo1, keep.extra.columns = TRUE,names.field = "ID")
+Grange2 = makeGRangesListFromDataFrame(methPipeInfo2, keep.extra.columns = TRUE,names.field = "ID")
+
+
+CMIBtemp = CMIB
+
+CMIB = CMIBtemp
+CMIB$start2[which(is.na(CMIB$contig2))] = 1
+CMIB$stop2[which(is.na(CMIB$contig2))] = 2
+CMIB$dir2[which(is.na(CMIB$contig2))] = "*"
+CMIB$contig2 = as.character(CMIB$contig2)
+CMIB$contig2[which(is.na(CMIB$contig2))] = "notFound2"
+
+CMIB$start1[which(is.na(CMIB$contig1))] = 1
+CMIB$stop1[which(is.na(CMIB$contig1))] = 2
+CMIB$dir1[which(is.na(CMIB$contig1))] = "*"
+CMIB$contig1[which(is.na(CMIB$contig1))] = "notFound2"
+
+
+Grange1Full = makeGRangesFromDataFrame(CMIB,
+                                       seqnames.field = "contig1", 
+                                       start.field = "start1", 
+                                       end.field = "stop1", 
+                                       strand.field = "dir1")
+
+Grange2Full = makeGRangesFromDataFrame(CMIB,
+                                       seqnames.field = "contig2", 
+                                       start.field = "start2", 
+                                       end.field = "stop2", 
+                                       strand.field = "dir2")
+
+
+
+overlap1DF = mapOverlaps(Grange1,Grange1Full)
+dim(overlap1DF)
+
+overlap2DF = mapOverlaps(Grange2,Grange2Full)
+dim(overlap2DF)
+
+
+```
+
+
+```{r merge the methpipeInfo files and the alignfiles}
+
+CMIB$ID1 = paste(CMIB$contig1,CMIB$start1,sep = "_")
+CMIB$ID2 = paste(CMIB$contig2,CMIB$start2,sep = "_")
+
+
+methPipeInfo1found = merge(overlap1DF, methPipeInfo1, by.x = "MethPipeID", by.y = "ID" )
+methPipeInfo1found = methPipeInfo1found[,c("AlignID","start","end","Score","Score2","strand")]
+colnames(methPipeInfo1found) = c("AlignID","MPstart_1","MPend_1","MPscore_1","MPscore2_1","MPstrand_1")
+methPipeInfo2found = merge(overlap2DF, methPipeInfo2, by.x = "MethPipeID", by.y = "ID")
+methPipeInfo2found = methPipeInfo2found[,c("AlignID","start","end","Score","Score2","strand")]
+colnames(methPipeInfo2found) = c("AlignID","MPstart_2","MPend_2","MPscore_2","MPscore2_2","MPstrand_2")
+
+CMIB2 = CMIB[,c("contig1","start1","stop1","dir1", "type1","methRate1","readCount1","ID1",
+                "contig2","start2","stop2","dir2", "type2","methRate2","readCount2","ID2","MethC")]
+
+
+
+CMIBtemp2 = CMIB2
+CMIB2 =  CMIBtemp2
+
+CMIB2 = merge(CMIB2,methPipeInfo1found , by.x = "ID1", by.y = "AlignID", all.x = TRUE)
+
+CMIB2 = merge(CMIB2,methPipeInfo2found , by.x = "ID2", by.y = "AlignID", all.x = TRUE)
+
+colnames(CMIB2)
+
+colnames(CMIB2) <- c("ID2","ID1",
+                     "contig1","start1","stop1","dir1","type1","methRate1","readCount1",
+                     "contig2","start2","stop2","dir2","type2","methRate2","readCount2",
+                     "MethC","HMR_start_1","HMR_end_1","HMR_score_1","HMR_score2_1","HMR_strand_1",
+                     "HMR_start_2","HMR_end_2","HMR_score_2","HMR_score2_2","HMR_strand_2") 
+
+
+CMIB2$MethPipe_HMR = "None"
+CMIB2$MethPipe_HMR[!is.na(CMIB2$HMR_start_1)] = "MethPipe1"
+CMIB2$MethPipe_HMR[!is.na(CMIB2$HMR_start_2)] = "MethPipe2"
+CMIB2$MethPipe_HMR[!is.na(CMIB2$HMR_start_2) & !is.na(CMIB2$HMR_start_1) ] = "MethPipe 1 & 2"
+
+
+
+temp = CMIB2
+
+```
+
+
+
+```{r plot the distribution of methylPipe locations}
+CMIBmethPipe = CMIB2[CMIB2$MethPipe_HMR != "None", ]
+ggplot(CMIBmethPipe, aes(MethPipe_HMR))+ geom_bar()
+
+
+```
+
+
+```{r plotting the distribution 1}
+wiewAble = CMIB2[CMIB2$contig1 %in% levels(viewableContigsDF$X2), ]
+ggplot(data = wiewAble, mapping =aes(start1))+ geom_density(adjust = 1/5, aes(color =as.vector( MethC))) + 
+  facet_grid(contig1 ~. ,scales = ("free_y")) + theme(strip.text.y = element_text(angle = 0))
+```
+
+
+```{r plotting the distribution 2}
+wiewAble = CMIB2[CMIB2$contig2 %in% levels(viewableContigsDF$X1), ]
+ggplot(data = wiewAble, mapping =aes(start2))+ geom_density(adjust = 1/5, aes(color =as.vector( MethC))) + 
+  facet_grid(contig2 ~. ,scales = ("free_y")) + theme(strip.text.y = element_text(angle = 0))
+```
+
+
+
+```{r saving the methylationPattern}
+
+write.table(x =CMIB2, 
+            file = paste(params$storageDir,params$internalStorageDir, params$mergedOutput_methPipe_methC_File, sep = "/"),
+             sep  = "\t", row.names = FALSE, col.names =  TRUE, quote =  FALSE ) 
+
+
+
+```
+
+
+```{ check the hypermethylated regions}
+
+Not used this time 
+
+
+CMIB2 = read.table(file = paste(params$storageDir,params$internalStorageDir, params$mergedOutput_methPipe_methC_File, sep = "/"), header = TRUE, sep = "\t",  stringsAsFactors = FALSE)
+
+# does not work for some reasonCMIB2 = read_tsv(file = paste(params$storageDir,params$internalStorageDir, params$mergedOutput_methPipe_methC_File, sep = "/"), col_names = TRUE )
+
+colnames(CMIB2) = CMIB2[1,]
+
+CMIB2 =  CMIB2[-1,]
+
+
+wiewAble = data.frame(CMIB2)
+wiewAble =wiewAble[wiewAble$MethPipe_HMR != "None", ] 
+
+
+
+
+ggplot(data = wiewAble, mapping =aes(start2))+ geom_density(adjust = 1/5, aes(color =as.vector( MethPipe_HMR))) + 
+  facet_grid(contig2 ~. ,scales = ("free_y")) + theme(strip.text.y = element_text(angle = 0))
+
+
+
+```
+

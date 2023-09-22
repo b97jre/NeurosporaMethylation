@@ -1,0 +1,484 @@
+---
+title: "RNAanalysis"
+author: "Johan"
+date: "6/29/2021"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+    code_folding: hide
+    df_print: paged
+    
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+
+
+library(tidyverse)
+ 
+  rename = dplyr::rename
+  select = dplyr::select
+  summarise = dplyr::summarise
+  group_by = dplyr::group_by
+
+```
+
+## Merging all the RNA seq data 
+
+### OrthoMCL data
+
+```{r orthoMCL}
+
+columns = cols(
+  orthoCluster = col_character(),
+  species = col_character(),
+  gene = col_character(),
+  length = col_double(),
+  InOrthoCluster = col_character(),
+  nrOfSpecies = col_double(),
+  nrOfGenesAll = col_double(),
+  meanLengthAll = col_double(),
+  AllSpecies = col_character(),
+  composition = col_character(),
+  nrOfGenesSpecies = col_double(),
+  meanLengthSpecies = col_character()
+)
+
+ortho = read_tsv("../../annotation/orthologs/finalOrthoMCLTable.tsv")
+
+ortho %>% filter(nrOfSpecies == 9) %>% filter(composition == "one2one") %>%
+  select(orthoCluster) %>% distinct() -> ortho.unique 
+
+ortho %>%  filter(species == "2489")%>% 
+  select(orthoCluster,gene,composition) %>%
+  separate_rows(gene, sep = ":") -> ortho2Gene
+
+
+ortho2Gene = ortho2Gene[grep(pattern = "-transcript",x =ortho2Gene$gene ), ] 
+ortho2Gene = ortho2Gene[grep(pattern = "NCU",x =ortho2Gene$gene ), ] 
+ortho2Gene = ortho2Gene[grep(pattern = "NCU",x =ortho2Gene$gene ), ] 
+ortho2Gene$gene = str_remove(ortho2Gene$gene, "-transcript")
+ortho2Gene = ortho2Gene %>% dplyr::rename(gene_id = "gene")
+
+
+
+
+
+
+```
+
+
+### RNAseq data
+
+```{r}
+files = list.files("../../data/RNA/featureCounts/")
+summaryFiles = files[grep(pattern = "summary", x = files)]
+
+summaryData = list()
+for(i in 1:length(summaryFiles)){
+  fcFileName = summaryFiles[i]
+  fcFile = paste("../../data/RNA/featureCounts", fcFileName, sep = "/")
+  fcData.species = read_tsv(file = fcFile, comment = "#")
+  fcData.species %>% gather(key = path,value = counts, -Status )-> summary.Data
+  summary.Data$Annotation = gsub(pattern = ".summary",replacement = "",fcFileName)
+  summary.Data %>% filter(Status %in% c("Assigned","Unassigned_Singleton","Unassigned_MultiMapping","Unassigned_NoFeatures","Unassigned_Ambiguity")) ->summary.Data
+  summaryData[[gsub(pattern = ".summary",replacement = "",fcFileName)]] =  summary.Data
+  
+}
+
+summaryData = bind_rows(summaryData)
+
+metaData = data.frame(path = unique(summaryData$path))
+
+
+metaData %>% separate(path,into = c("bamFiles","Species","filename"), sep = "/", remove = FALSE) -> metaData
+
+metaData %>% mutate(info = gsub(pattern = "_ribofiltered\\+trimmed_Aligned.sortedByCoord.out.bam", 
+                                replacement = "",
+                                x = filename)) ->
+  metaData
+
+metaData %>% separate(col = info, into = c("Sample","genome"), sep = "_vs.")  -> metaData
+metaData %>% 
+  mutate(Sample = gsub(pattern = "aaP",replacement = "BA_P", x = Sample)) %>%
+  mutate(Sample = gsub(pattern = "aP",replacement = "sa_P", x = Sample)) %>%
+  mutate(Sample = gsub(pattern = "crassa-BA",replacement = "crassa_BA", x = Sample))  %>% 
+  mutate(Sample = gsub(pattern = "crassa-sa",replacement = "crassa_sa", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "crassa-ap3",replacement = "crassa_sa_P3", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "L1BA",replacement = "L1_BA", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "L1sa",replacement = "L1_sa", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "L10BA",replacement = "L10_BA", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "L10sa",replacement = "L10_sa", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "L6BA",replacement = "L6_BA", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "L6sa",replacement = "L6_sa", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "L6BA",replacement = "L6_BA", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "L6sa",replacement = "L6_sa", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "L6BA",replacement = "L6_BA", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "Sito-BA",replacement = "sito_BA", x = Sample))  %>%
+  mutate(Sample = gsub(pattern = "Sito-sa",replacement = "sito_sa", x = Sample))  -> 
+  metaData2
+
+
+metaData2 %>% 
+  separate(col = Sample, into = c("species","type","sample","number"), sep = "_") %>%
+  mutate(tissue = ifelse(str_detect(sample, "sex"), "sex", "veg")) %>%
+  mutate(sample = gsub(pattern = "-sex",replacement = "", x = sample))  -> 
+  metaData2
+
+metaData2 %>% 
+    select(Species, species,type, sample,number,genome, tissue, path) %>%
+    rename(Annotation = "Species")%>%
+    dplyr::mutate(Species = paste(species, type, sep = "_")) %>%
+    select(Annotation, Species, sample,number,genome, tissue, path) %>%
+  filter(Annotation == Species) -> 
+  metaData2
+
+metaData2 %>%
+  inner_join(summaryData) ->
+  summaryData
+  
+
+summaryData %>% ggplot(mapping = aes(x = sample, y = counts, fill = Status )) +
+  geom_col(position = "Fill")+ facet_wrap(facets = c("Annotation","tissue"))
+  
+
+metaData2 %>% mutate(sampleID = paste(Species,sample,tissue, sep = "_")) %>%
+  select(sampleID,Annotation, Species, sample,number,genome, tissue, path) -> 
+  metaData2
+  
+write_tsv(x = metaData2, file = "../../data/RNA/metaData.tsv")
+
+
+```
+
+```{r}
+
+files = list.files("~/git/h_johannesson/results/RNA/featureCounts")
+fcFiles = files[-grep(pattern = "summary", x = files)]
+
+fcData = list()
+for(i in 1:length(fcFiles)){
+  fcFileName = fcFiles[i]
+  fcFile = paste("~/git/h_johannesson/results/RNA/featureCounts", fcFileName, sep = "/")
+  fcData.species = read_tsv(file = fcFile, comment = "#")
+  fcData.species %>% gather(key = path,value = counts, -Geneid,-Chr,-Start, -End, -Strand, -Length ) %>% 
+    filter(Geneid %in% ortho.unique$orthoCluster) ->fcData.species.ortho
+  fcData.species.ortho$Annotation = fcFileName
+  
+  fcData[[fcFileName]] =  fcData.species.ortho
+}
+
+
+library(stringr)
+
+fcData = bind_rows(fcData)
+
+## Including Plots
+
+
+metaData2 %>%inner_join(fcData) -> fcData.2
+
+fcData.2 %>% select(sampleID,Geneid,counts) %>%
+  spread(key = sampleID, value = counts)->
+  countMatrix 
+
+write_tsv(x = countMatrix, file = "~/git/NeurosporaMethylation/data/RNA/RNAcountMatrix.tsv")
+
+
+
+
+
+```
+##
+
+```{r pressure, echo=FALSE}
+countMatrix = read_tsv("~/git/NeurosporaMethylation/data/RNA/RNAcountMatrix.tsv")
+
+metaData2 = read_tsv(file = "../../data/RNA/metaData.tsv")
+
+countMatrix %>% column_to_rownames(var = "Geneid") ->
+  countMatrix
+
+
+rownames(metaData2) =  metaData2$sampleID
+countMatrix = countMatrix[,rownames(metaData2)]
+
+library(DESeq2)
+
+metaData2$tissue = as.factor(metaData2$tissue)
+metaData2$Species = as.factor(metaData2$Species)
+
+dds <- DESeqDataSetFromMatrix(countData = countMatrix,
+                               colData = metaData2,
+                               design = ~ Species + tissue)
+
+
+dds <- DESeq(dds)
+normCounts = DESeq2::counts(dds,normalized = TRUE )
+res <- results(dds) 
+res_df  = res%>% as.data.frame()
+
+normCounts = as.data.frame(normCounts)
+
+normCounts %>% rownames_to_column(var = "Geneid") %>%
+  pivot_longer(cols = -Geneid, names_to = "sampleID", values_to = "normCounts") %>%
+  inner_join(metaData2)->
+  normCounts.longer
+
+
+normCounts.longer %>%
+  group_by(Species,tissue, Geneid) %>%
+  summarise(meanCount = log2(mean(normCounts)+1))->
+  normCounts.longer.summary
+
+
+
+normCounts.longer.summary %>% 
+  ggplot(aes(meanCount)) + geom_density()
+
+normCounts.longer.summary %>%
+  filter(meanCount > 4) %>%
+  filter(Species =="crassa_BA") %>%
+  as.data.frame() %>%
+  distinct(Geneid)->
+  normCounts.expressed
+
+normCounts.longer.summary %>%
+  inner_join(normCounts.expressed) ->
+  normCounts.longer.summary
+
+normCounts.longer.summary %>%
+  ggplot(aes(meanCount)) + geom_density()
+
+
+normCounts.longer.summary %>% group_by(Species) %>%
+  summarise(mean = mean(meanCount), sd = sd(meanCount)) %>%
+  inner_join(normCounts.longer.summary) %>%
+  mutate(zscore = (meanCount-mean) /sd)->
+  normCounts.longer.summary
+
+
+transformedData = vst(dds)
+plotPCA(transformedData, intgroup=c("tissue"))  
+
+plotPCA(transformedData, intgroup=c("Species"))  
+
+
+
+normCounts.longer.summary %>% filter(Species =="crassa_BA") %>%
+  ggplot(aes(zscore)) + geom_density()
+
+
+
+normCounts.longer.summary %>% filter(Species =="crassa_BA")  %>%
+  dplyr::select(Species, tissue, Geneid, meanCount) %>%
+  pivot_wider(values_from = "meanCount", names_from = "tissue") %>%
+  filter(!is.na(sex) & !is.na(veg)) %>%
+  mutate(diff = sex - veg) %>%
+  pivot_longer(cols = c("sex","veg","diff"), names_to = "Type2", values_to = "RNAvalues") ->RNAseq.distribution.summary
+  
+  
+RNAseq.distribution.summary %>% select(Geneid, Type2,RNAvalues) -> RNAlevels
+
+
+RNAlevels %>% 
+  filter(Type2 != "diff") %>%
+  ggplot(aes(x = RNAvalues, color = Type2)) + geom_density( )
+ggsave("../../results/RNA/normalisedDistribution.RNA.crassa_BA.tissue.pdf")
+
+
+```
+
+
+```{r}
+
+
+species.transcripts.diff 
+
+
+methylationLevels
+
+
+  methylationLevels.ortho %>%
+  rename(Geneid = "orthoCluster") %>%
+  left_join(RNAlevels)  -> 
+  jointValues
+
+
+
+jointValues %>% 
+  mutate(methLevel = "high") %>%
+  mutate(methLevel = replace(x = methLevel,
+                             list = methValues < 0.75,
+                             values = "average")) %>%
+    mutate(methLevel = replace(x = methLevel,
+                             list = methValues < -0.75,
+                             values = "low"))->
+  jointValues
+
+  jointValues %>%
+  group_by(Type2,methLevel) %>%
+  summarise(n = n())
+
+
+  
+  
+
+jointValues %>%
+  filter(Type2 != "diff") %>%
+ggplot(jointValues ,mapping = aes(y = RNAvalues, x = methLevel)) +
+  facet_wrap(.~Type2) + geom_boxplot()
+
+jointValues %>%
+  mutate(methLevel = factor(methLevel, levels = c("low","average","high"))) %>%
+  filter(Type2 != "diff") %>%
+  rename(methylation_Level = "methLevel" ) %>%
+ggplot(jointValues ,mapping = aes(y = RNAvalues, x = methylation_Level, fill = methylation_Level)) +
+  facet_wrap(.~Type2, ncol = 1) +
+  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75)) + 
+  coord_cartesian(ylim=c(0, 25)) +
+  theme_light() +
+  ylab("log2(RNA expression)") +
+  ggtitle("RNAexpression levels for genes in \nthe different methylation classes")-> RNAlevelPlot
+
+
+jointValues %>%
+  mutate(methLevel = factor(methLevel, levels = c("low","average","high"))) %>%
+  filter(Type2 != "diff") %>%
+  rename(methylation_Level = "methLevel" ) %>%
+ggplot(jointValues ,mapping = aes(y = methValues, x = methylation_Level, fill = methylation_Level)) +
+  facet_wrap(.~Type2, ncol = 1) +
+  geom_violin() + 
+  coord_cartesian(ylim=c(-2, 3)) + 
+  theme_light() +
+  ylab("normalisation score (z-score)") +
+  ggtitle("Methylation levels in genes for\n the different methylation classes")-> methLevelsPlot
+
+
+
+library(patchwork)
+
+methLevelsPlot+RNAlevelPlot + plot_layout(guides = "collect")
+
+ggsave("../../results/RNA/normalisedDistribution.RNA.methylation.crassa_BA.pdf")
+```
+
+
+
+```{r}
+
+jointValues %>%
+  filter(Type2 == "diff") %>%
+  mutate(methLevel = replace(methLevel , methLevel == "low","Higher in vegetative state")) %>%
+  mutate(methLevel = replace(methLevel , methLevel == "average","Same in both tissues")) %>%
+  mutate(methLevel = replace(methLevel , methLevel == "high","Higher in sexual state")) %>%
+  mutate(methLevel = factor(methLevel, levels = c("Higher in vegetative state",
+                                                  "Same in both tissues",
+                                                  "Higher in sexual state"))) %>%
+  rename(methylation_Level = "methLevel" ) %>%
+ggplot(jointValues ,mapping = aes(y = RNAvalues, x = methylation_Level, fill = methylation_Level)) +
+  facet_wrap(.~Type2, ncol = 1) +
+  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75)) + 
+  coord_cartesian(ylim=c(-5, 10)) + 
+  theme_light()+ theme(axis.text.x=element_text(angle = -90, hjust = 0)) +
+  ylab("∆log2(RNA expression)") -> RNAlevelPlot
+
+#
+#  ggtitle("Difference in RNA expression levels comparing the two tissues \n
+#          for genes in \nthe different methylation classes")
+
+
+
+jointValues %>%
+  filter(Type2 == "diff") %>%
+  mutate(methLevel = replace(methLevel , methLevel == "low","Higher in vegetative state")) %>%
+  mutate(methLevel = replace(methLevel , methLevel == "low","Higher in vegetative state")) %>%
+  mutate(methLevel = replace(methLevel , methLevel == "average","Same in both tissues")) %>%
+  mutate(methLevel = replace(methLevel , methLevel == "high","Higher in sexual state")) %>%
+  mutate(methLevel = factor(methLevel, levels = c("Higher in vegetative state",
+                                                  "Same in both tissues",
+                                                  "Higher in sexual state"))) %>%
+  rename(methylation_Level = "methLevel" ) %>%
+ggplot(jointValues ,mapping = aes(y = methValues, x = methylation_Level, fill = methylation_Level)) +
+  facet_wrap(.~Type2, ncol = 1) +
+  geom_violin() + 
+  coord_cartesian(ylim=c(-2, 3)) + 
+  theme_light()+ theme(axis.text.x=element_text(angle = -90, hjust = 0)) +
+  ylab("Difference in methylation levels (∆zscore)") -> methLevelsPlot
+
+#  ggtitle("Methylation levels in genes for\n the different methylation classes")
+
+methLevelsPlot+RNAlevelPlot + plot_layout(guides = "collect")
+
+ggsave("../../results/RNA/normalisedDistribution.RNA.methylation.diff.crassa_BA.pdf")
+
+
+
+```
+
+
+```{r}
+ggplot(jointValues ,mapping = aes(x = RNAvalues, color = methLevel)) +
+  facet_wrap(.~Type2) + stat_ecdf()
+
+
+jointValues %>% filter(Type2 == "diff") ->
+  jointValues.diff
+
+jointValues.diff %>% filter(methLevel == "high") ->
+  jointValues.diff.high
+
+jointValues.diff %>% filter(methLevel == "low") ->
+  jointValues.diff.low
+ 
+jointValues.diff %>% filter(methLevel == "average") ->
+  jointValues.diff.average
+
+ks.diff.high  = ks.test(jointValues.diff.high$RNAvalues, jointValues.diff.average$RNAvalues)
+ks.diff.low  = ks.test(jointValues.diff.low$RNAvalues, jointValues.diff.average$RNAvalues)
+
+
+jointValues %>% filter(Type2 == "sex") ->
+  jointValues.diff
+
+jointValues.diff %>% filter(methLevel == "high") ->
+  jointValues.diff.high
+
+jointValues.diff %>% filter(methLevel == "low") ->
+  jointValues.diff.low
+ 
+jointValues.diff %>% filter(methLevel == "average") ->
+  jointValues.diff.average
+
+ks.sex.high  = ks.test(jointValues.diff.high$RNAvalues, jointValues.diff.average$RNAvalues, alternative = "greater")
+ks.sex.low  = ks.test(jointValues.diff.low$RNAvalues, jointValues.diff.average$RNAvalues, alternative = "greater")
+
+jointValues %>% filter(Type2 == "veg") ->
+  jointValues.diff
+
+jointValues.diff %>% filter(methLevel == "high") ->
+  jointValues.diff.high
+
+jointValues.diff %>% filter(methLevel == "low") ->
+  jointValues.diff.low
+ 
+jointValues.diff %>% filter(methLevel == "average") ->
+  jointValues.diff.average
+
+ks.veg.high  = ks.test(jointValues.diff.high$RNAvalues, jointValues.diff.average$RNAvalues, alternative = "greater")
+ks.veg.low  = ks.test(jointValues.diff.low$RNAvalues, jointValues.diff.average$RNAvalues, alternative = "greater")
+
+
+KS = data.frame(diff = c(ks.diff.high$p.value,ks.diff.low$p.value),
+           sex = c(ks.sex.high$p.value,ks.sex.low$p.value),
+           veg = c(ks.veg.high$p.value,ks.veg.low$p.value))
+rownames(KS) = c("High","Low")
+
+
+KS
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
