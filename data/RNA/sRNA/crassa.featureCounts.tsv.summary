@@ -1,0 +1,15 @@
+Status	bams/crassa/SRR4448063.sam	bams/crassa/SRR4448064.sam	bams/crassa/SRR751454.cutadapt.sam	bams/crassa/SRR755946.cutadapt.sam	bams/crassa/SRR756251.cutadapt.sam	bams/crassa/SRR756354.cutadapt.sam	bams/crassa/SRR769610.sam	bams/crassa/SRR769748.sam
+Assigned	48529683	58119006	1470002	67782401	36850423	26696247	39861	25200
+Unassigned_Unmapped	4956341	3959955	29301	5429003	2815121	2167444	29610648	21273845
+Unassigned_Read_Type	0	0	0	0	0	0	0	0
+Unassigned_Singleton	0	0	0	0	0	0	0	0
+Unassigned_MappingQuality	0	0	0	0	0	0	0	0
+Unassigned_Chimera	0	0	0	0	0	0	0	0
+Unassigned_FragmentLength	0	0	0	0	0	0	0	0
+Unassigned_Duplicate	0	0	0	0	0	0	0	0
+Unassigned_MultiMapping	0	0	0	0	0	0	0	0
+Unassigned_Secondary	0	0	0	0	0	0	0	0
+Unassigned_NonSplit	0	0	0	0	0	0	0	0
+Unassigned_NoFeatures	3741263	6150719	108179	11973618	5050315	4714463	118317	20572
+Unassigned_Overlapping_Length	0	0	0	0	0	0	0	0
+Unassigned_Ambiguity	0	0	0	0	0	0	0	0
