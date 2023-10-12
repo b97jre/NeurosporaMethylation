@@ -1,0 +1,9 @@
+./L1/Neurospora.tetrasperma.Illumina.sorted.9034.fa
+./L1/L1.combinedgenome.fa
+./L1/Neurospora.tetrasperma.Illumina.sorted.9033.fa
+./L6/Neurospora_tetrasperma_fgsc_2508.v2.0.dna.toplevel.fa
+./L6/Neurospora_tetrasperma_fgsc_2509.v1.0.dna.toplevel.fa
+./L6/L6.combinedgenome.fa
+./L10/FGSC10708_L10a_sorted_ordered.fa
+./L10/L10.combinedgenome.fa
+./L10/FGSC10707_L10A_sorted_ordered.fa
