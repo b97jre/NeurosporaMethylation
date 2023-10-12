@@ -1,0 +1,392 @@
+---
+title: "Mapping sRNA"
+output: html_document
+date: "2023-05-09"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## Uppmax
+
+```{r}
+
+projDir = "/proj/sllstore2017101/nobackup/b2016278/private/Neurospora/sRNA"
+bowtiePath = "references/crassa/Bowtie/ref2498_crassa"
+fastqDir = "reads/crassa"
+fastq.cutadapt = "reads/crassa/cutadapt"
+bamDir = "bams/crassa"
+
+
+
+
+
+```
+## Samples 
+```{r}
+sampleInfo = data.frame(fastqFiles  = c("SRR4448063.fastq", "SRR751454.fastq","SRR756251.fastq",  "SRR769610.fastq", "SRR769748.fastq", "SRR4448064.fastq","SRR755946.fastq","SRR756354.fastq")) 
+
+                        
+sampleInfo %>% separate(fastqFiles,into = c("SRA","junk"), sep = "\\.", remove = FALSE) %>%
+  select(SRA, fastqFiles) ->
+   sampleInfo
+```
+
+
+# Cutadapt
+```{r}
+
+cutadaptCommands = list()
+for(sample in sampleInfo$SRA){
+  # remove adapter
+cutadapt =   paste("cutadapt -m 15 -M 35 --trimmed-only  -j 4 -a TGGAATTCTCGGGTGCCAAGG  ",fastqDir,"/",sample,".fastq  -o ", fastq.cutadapt,"/",sample,".cutadapt.fastq >",fastq.cutadapt,"/",sample,".cutadapt.summary" , sep = "")
+  cutadaptCommands[[sample]] = cutadapt
+}
+
+sbatchFile = "sbatchScripts/sRNA.cutadapt.sbatch"
+write(x = "#!/bin/bash -l", file =sbatchFile, append = FALSE) 
+write("#SBATCH -A snic2022-22-1096", file =sbatchFile, append = TRUE)
+write("#SBATCH -p core", file =sbatchFile, append = TRUE)
+write("#SBATCH -n 4", file =sbatchFile, append = TRUE)
+write("#SBATCH -J cutadapt", file =sbatchFile, append = TRUE)
+write("#SBATCH -t 24:00:00", file =sbatchFile, append = TRUE)
+write("#SBATCH --error=reports/R-%x.%j.out.StdErr", file =sbatchFile, append = TRUE)
+write("#SBATCH --output=reports/R-%x.%j.out.StdOut", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("# Load modules", file =sbatchFile, append = TRUE)
+write("module load bioinfo-tools", file =sbatchFile, append = TRUE)
+write("module load cutadapt", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("# Go to correct directory", file =sbatchFile, append = TRUE)
+write(paste ("cd",projDir), file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("# Run cutadapt on files", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+
+
+for(sample in sampleInfo$SRA){
+  # remove adapter
+write(cutadaptCommands[[sample]], file =sbatchFile, append = TRUE)
+
+}
+
+```
+
+## Bowtie
+
+
+
+#### Sbatch for reference building
+
+```{bash }
+#!/bin/bash -l
+#SBATCH -A snic2022-22-1096
+#SBATCH -p core
+#SBATCH -n 4
+#SBATCH -J bowtie_build
+#SBATCH -t 24:00:00
+#SBATCH --error=reports/R-%x.%j.out.StdErr
+#SBATCH --output=reports/R-%x.%j.out.StdOut
+
+
+module load bioinfo-tools 
+module load bowtie
+
+
+cd /proj/sllstore2017101/nobackup/b2016278/private/referenceGenomes/ref2489_Crassa 
+
+bowtie-build --threads 4  Neurospora_crassa.NC12.dna_sm.toplevel.fa Bowtie/ref2498_crassa
+ 
+
+
+```
+
+#### Sbatch for mapping
+
+```{r}
+
+bowtieCommands.cutadapt = list()
+for(sample in sampleInfo$SRA){
+  # remove adapter
+#  bowtie -q -v 0 -k 10 -S -t -p 4 <index.name> <small_rna.fastq> <out.sam>
+bowtie =   paste("bowtie -q -v 0 -k 10 -S -t -p 4 ",bowtiePath,
+                 " ",fastq.cutadapt,"/",sample,".cutadapt.fastq ",
+                 bamDir,"/",sample,".cutadapt.sam >" ,
+                 bamDir,"/",sample,".cutadapt.summary 2>&1", sep = "")
+  bowtieCommands.cutadapt[[sample]] = bowtie
+}
+
+bowtieCommands.full = list()
+for(sample in sampleInfo$SRA){
+  # remove adapter
+#  bowtie -q -v 0 -k 10 -S -t -p 4 <index.name> <small_rna.fastq> <out.sam>
+bowtie =   paste("bowtie -q -v 0 -k 10 -S -t -p 4 ",bowtiePath,
+                 " ",fastqDir,"/",sample,".fastq ",
+                 bamDir,"/",sample,".sam >" ,
+                 bamDir,"/",sample,".summary 2>&1", sep = "")
+  bowtieCommands.full[[paste(sample)]] = bowtie
+}
+
+
+sbatchFile = "sbatchScripts/sRNA.bowtie.sbatch"
+write(x = "#!/bin/bash -l", file =sbatchFile, append = FALSE) 
+write("#SBATCH -A snic2022-22-1096", file =sbatchFile, append = TRUE)
+write("#SBATCH -p core", file =sbatchFile, append = TRUE)
+write("#SBATCH -n 4", file =sbatchFile, append = TRUE)
+write("#SBATCH -J bowtie", file =sbatchFile, append = TRUE)
+write("#SBATCH -t 24:00:00", file =sbatchFile, append = TRUE)
+write("#SBATCH --error=reports/R-%x.%j.out.StdErr", file =sbatchFile, append = TRUE)
+write("#SBATCH --output=reports/R-%x.%j.out.StdOut", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("# Load modules", file =sbatchFile, append = TRUE)
+write("module load bioinfo-tools", file =sbatchFile, append = TRUE)
+write("module load bowtie", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("# Go to correct directory", file =sbatchFile, append = TRUE)
+write(paste ("cd",projDir), file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("# Run cutadapt on files", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+
+
+for(sample in sampleInfo$SRA){
+  # remove adapter
+  write(bowtieCommands.cutadapt[[sample]], file =sbatchFile, append = TRUE)
+}
+for(sample in sampleInfo$SRA){
+  # remove adapter
+  write(bowtieCommands.full[[sample]], file =sbatchFile, append = TRUE)
+}
+
+
+
+
+```
+
+## featureCounts
+```{r}
+sbatchFile = "sbatchScripts/sRNA.featureCount.sbatch"
+write(x = "#!/bin/bash -l", file =sbatchFile, append = FALSE) 
+write("#SBATCH -A snic2022-22-1096", file =sbatchFile, append = TRUE)
+write("#SBATCH -p core", file =sbatchFile, append = TRUE)
+write("#SBATCH -n 4", file =sbatchFile, append = TRUE)
+write("#SBATCH -J featureCounts", file =sbatchFile, append = TRUE)
+write("#SBATCH -t 2:00:00", file =sbatchFile, append = TRUE)
+write("#SBATCH --error=reports/R-%x.%j.out.StdErr", file =sbatchFile, append = TRUE)
+write("#SBATCH --output=reports/R-%x.%j.out.StdOut", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("# Load modules", file =sbatchFile, append = TRUE)
+write("module load bioinfo-tools", file =sbatchFile, append = TRUE)
+write("module load subread", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("# Go to correct directory", file =sbatchFile, append = TRUE)
+write(paste ("cd",projDir), file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("# Run featureCount on files", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+
+#featureCounts -t miRNA -g Name -O -s 1 -M -a <mirbasefile> -o <outfile> <samfiles> 
+
+featureCountCommand = "featureCounts -t exon -g Parent -O -M -a references/crassa/2489.all.withOrthoID.gff -o counts/crassa.featureCounts.tsv bams/crassa/*.sam"
+write(featureCountCommand, file =sbatchFile, append = TRUE)
+
+```
+
+
+```{r }
+
+counts = read_tsv(file = "data/RNA/sRNA/crassa.featureCounts.tsv", skip = 1)
+
+geneinfo = counts[1:6]
+
+readinfo = counts[-1:-6]
+readinfo$tx_id = geneinfo[[1]]
+
+readinfo %>% pivot_longer(-tx_id, names_to = "Sample", values_to = "Counts" ) %>%
+  mutate(Sample = gsub(pattern = "bams/crassa/", "",x = Sample)) %>%
+  mutate(Sample = gsub(pattern = ".sam", "",x = Sample)) ->readinfo
+
+  
+
+
+readinfo %>% group_by(Sample) %>%
+  summarise(mappedReads = sum(Counts)) -> 
+  readinfo.summary
+
+readinfo.summary %>% filter(mappedReads >1000000) ->
+  readinfo.summary.qc
+
+readinfo %>% filter(Sample %in% readinfo.summary.qc$Sample) ->
+readinfo.qc  
+
+exp.data = readinfo.qc %>%
+  pivot_wider(values_from = "Counts", names_from = "Sample") %>%
+  column_to_rownames("tx_id")
+
+
+exp.data <- exp.data + 1
+
+#BiocManager::install("edgeR")
+library(edgeR)
+
+lib.size <- apply(exp.data,2,sum)
+scale.factors <- calcNormFactors(exp.data, method="TMM") 
+
+norm.data <- t(t(exp.data)/(scale.factors*lib.size))
+
+norm.data = norm.data*1000000
+
+norm.data <- log2(norm.data)
+
+sample.pca <- prcomp(t(norm.data))     ## compute principal components
+sample.pca$x %>% as.data.frame() %>% rownames_to_column("Sample") %>%
+  pivot_longer(cols = -Sample, names_to = "PC",values_to = "value") ->
+  sample.pca.long
+
+sample.pca$x %>% as.data.frame()%>%
+  rownames_to_column("Sample") %>%
+  ggplot(aes(x = PC1,y = PC2,label = Sample )) +
+  geom_point() + 
+  ggrepel::geom_label_repel()
+```
+
+# ERI1 analysis
+```{r }
+
+
+norm.data %>%  as.data.frame() %>%
+  rownames_to_column ("tx_id")  %>%
+ pivot_longer(-tx_id, names_to = "Sample", values_to = "logN" ) ->
+  norm.data.long
+
+
+norm.data.long %>% filter(grepl("SRR444", Sample)) %>%
+  mutate(Sample = gsub("SRR4448063","ERI1",Sample)) %>%
+  mutate(Sample = gsub("SRR4448064","wt",Sample)) ->
+  ERI1.norm.long
+
+
+ERI1.norm.long %>%  pivot_wider(names_from = "Sample",values_from = "logN") %>%
+  mutate(difference = ERI1 - wt) -> ERI1.norm.wide
+  
+
+ERI1.norm %>% ggplot(aes(x = difference)) + geom_density()
+
+ERI1.norm.long %>% ggplot(aes(x = logN, color = Sample)) + geom_density()
+
+
+ERI1.norm.long %>% 
+  filter(logN >5) %>%
+  distinct(tx_id) ->
+  ERI1.norm.high
+
+ERI1.norm %>% filter(abs(difference) > 2) %>%
+  filter(tx_id %in% ERI1.norm.high$tx_id) %>%
+  arrange(-abs(difference)) -> 
+  ERI1.norm.diff
+ERI1.norm.diff
+
+
+
+
+```
+
+
+```{r} 
+
+read_tsv("annotation/genomeAnnotations/Neurospora_crassa.methylated.conserved.genes.tsv") ->
+  methylated.conserved.genes
+
+
+methylated.conserved.genes
+
+ERI1.norm.long %>% 
+  mutate(tx_id2 = gsub("transcript:","", tx_id)) %>%
+  separate(tx_id2, into =c("tx_id3","else"), sep = "-") ->
+  ERI1.norm.long
+
+ERI1.norm %>% inner_join(methylated.conserved.genes)
+
+read_tsv("annotation/genomeAnnotations/Neurospora_crassa.NC12.gff", comment = "#", col_names = FALSE) %>%
+  filter(X3 == "mRNA") %>%
+  select(X9) %>%
+  separate(X9,into = c("ID", "parent" ),sep = ";" ) %>%
+  mutate(tx_id3 = gsub("ID=transcript:","",ID)) %>%
+  mutate(gene_id = gsub("Parent=gene:","",parent)) %>%
+  select(gene_id,tx_id3) %>%
+  inner_join(ERI1.norm.long) -> 
+  ERI1.norm.long
+
+
+ERI1.norm.long %>% left_join(methylated.conserved.genes) %>%
+  mutate(conserved = "yes") %>%
+  mutate(conserved = replace(conserved, is.na(both),"no")) ->
+  ERI1.norm.long.methylated
+
+ERI1.norm.long.methylated %>% ggplot(aes(x = logN, color = conserved)) + geom_density() + facet_wrap("Sample")
+
+
+ERI1.norm.long.methylated %>%
+  select(gene_id, Sample,logN,conserved ) %>%
+  group_by(gene_id,Sample) %>%
+  slice_head(n = 1) %>%
+  ungroup() %>%
+  pivot_wider(names_from = Sample, values_from = logN  ) %>%
+  mutate(difference = ERI1 - wt) -> ERI1.norm.wide.methylated
+  
+
+ERI1.norm.wide.methylated %>% ggplot(aes(x = difference, color =conserved )) + geom_density()
+
+
+
+ERI1.norm.wide.methylated %>% 
+  filter(conserved == "yes") %>%
+  arrange(-abs(difference))
+
+
+```
+
+
+
+## ERI-1
+
+Controll t
+```{r }
+
+
+
+```
+
+
+## Wt Tetra crassa sRNA analysis
+
+Kontrollera om sRNA är mer konserverade än vad man   
+```{r}
+
+
+```
+
+## Read quality
+```{r   }
+
+
+```
+
+
+## Cross association
+
+## Compare histone marks with methylation 
+
+
+

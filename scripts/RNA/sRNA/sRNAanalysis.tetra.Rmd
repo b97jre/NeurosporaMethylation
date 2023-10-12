@@ -1,0 +1,908 @@
+---
+title: "Mapping sRNA"
+output: html_document
+date: "2023-05-09"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## Uppmax
+
+```{r}
+
+projDir = "/proj/sllstore2017101/nobackup/b2016278/private/Neurospora/sRNA"
+fastq.cutadapt = "reads/tetra/cutadapt"
+bamDir = "bams/tetra"
+
+
+
+
+
+```
+## Samples 
+```{r}
+
+files = read.delim(file = "../../../data/RNA/sRNA/tetrasperma.uppmax.fastqFiles.txt", header = FALSE)
+files %>% separate(V1, into = c("dir1","dir2","dir3","file"), sep = "/") %>%
+  mutate(dir = paste(dir1,dir2,dir3, sep = "/")) %>%
+  mutate(path = paste("/proj/sllstore2017101/nobackup/b2016278/private/rawdata",dir,file, sep = "/")) %>%
+  select(file,dir,path) %>%
+  mutate(sample = gsub(pattern = "_L001_R1_001.fastq.gz", replacement = "", file)) %>%
+  select(sample, file,dir,path) %>% arrange(sample) %>% 
+  separate(sample, into = c("sample","sampleID"), sep = "_") %>%
+  mutate(tissue = "veg") %>%
+  mutate(tissue = replace(tissue, grepl(pattern = "sex", sample), "sex")) %>%
+  select(sample,sampleID, tissue,file,dir,path) %>%  
+  distinct() %>%
+  mutate(strain = "L1") %>%
+  mutate(strain = replace(strain, grepl(pattern = "L10", sample), "L10")) %>%
+  mutate(strain = replace(strain, grepl(pattern = "L6", sample), "L6")) %>%
+  mutate(mix = "a") %>%
+  mutate(mix = replace(mix, grepl(pattern = "aa", sample), "A")) %>%
+  mutate(mix = replace(mix, grepl(pattern = "R1", sample), "R1")) %>%
+  mutate(mix = replace(mix, grepl(pattern = "R2", sample), "R2")) %>%
+  mutate(mix = replace(mix, grepl(pattern = "R3", sample), "R3"))  %>%
+  select(sample,strain, mix, tissue, sampleID,file,dir,path)  %>%
+  arrange(strain, mix, tissue) -> 
+  sampleInfo
+  
+
+sampleInfo %>% mutate(cutadaptFile = paste(sample,"cutadapt.fastq.gz", sep = ".")) -> sampleInfo
+
+
+```
+
+
+# Cutadapt
+```{r}
+
+cutadaptCommands = list()
+
+
+
+for(i in 1:nrow(sampleInfo)){
+  sample = sampleInfo$sample[i]
+  path = sampleInfo$path[i]
+  
+  
+  
+  # remove adapter
+cutadapt =   paste("cutadapt -m 15 -M 35 --trimmed-only  -j 4 -a TGGAATTCTCGGGTGCCAAGG  ",
+                   path,
+                   "  -o ",
+                   fastq.cutadapt,"/",sample,".cutadapt.fastq.gz >",
+                   fastq.cutadapt,"/",sample,".cutadapt.summary" , sep = "")
+  cutadaptCommands[[sample]] = cutadapt
+}
+
+sbatchFile = "../../../sbatchScripts/sRNA.cutadapt.tetra.sbatch"
+write(x = "#!/bin/bash -l", file =sbatchFile, append = FALSE) 
+write("#SBATCH -A snic2022-22-1096", file =sbatchFile, append = TRUE)
+write("#SBATCH -p core", file =sbatchFile, append = TRUE)
+write("#SBATCH -n 4", file =sbatchFile, append = TRUE)
+write("#SBATCH -J cutadapt", file =sbatchFile, append = TRUE)
+write("#SBATCH -t 24:00:00", file =sbatchFile, append = TRUE)
+write("#SBATCH --error=reports/R-%x.%j.out.StdErr", file =sbatchFile, append = TRUE)
+write("#SBATCH --output=reports/R-%x.%j.out.StdOut", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("# Load modules", file =sbatchFile, append = TRUE)
+write("module load bioinfo-tools", file =sbatchFile, append = TRUE)
+write("module load cutadapt", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("# Go to correct directory", file =sbatchFile, append = TRUE)
+write(paste ("cd",projDir), file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("# Run cutadapt on files", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+
+
+for(i in 1:nrow(sampleInfo)){
+  sample = sampleInfo$sample[i]
+  # remove adapter
+  write(cutadaptCommands[[sample]], file =sbatchFile, append = TRUE)
+  
+}
+
+references = read_tsv("../../../references/tetraGenomes.txt", colnames(FALSE))
+
+
+```
+
+
+#### Distribution
+```{r}
+
+path1 = "~/storage/NeurosporaMethylation/reads/tetra/cutadapt/"
+files <- list.files(path = path1, pattern = "summary")
+
+
+cutadaptInfo = list()
+for(file in files){
+  df = read_tsv(file = paste(path1, file, sep = "/"),skip = 35 ) %>%
+    mutate(file = file)
+  cutadaptInfo[[file]]= df
+}
+
+
+
+bind_rows(cutadaptInfo) %>%
+  mutate(length = 51 - length) %>%
+  mutate(sample = gsub(pattern = ".cutadapt.summary","",file)) ->
+  cutadapt.distribution.df 
+
+
+
+sampleInfo %>% select(sample, strain,mix, tissue ) %>% inner_join(cutadapt.distribution.df) -> 
+  cutadapt.distribution.df.2
+
+
+cutadapt.distribution.df.2 %>%
+  group_by(strain,mix,tissue, length) %>%
+  summarise(count = sum(count)) %>%
+  ungroup() -> 
+ cutadapt.distribution.df.2 
+
+
+cutadapt.distribution.df.2 %>% group_by(strain,mix,tissue) %>%
+  summarise(total = sum(count)) %>%
+  ungroup() %>%
+  inner_join(cutadapt.distribution.df.2) %>%
+  mutate(fraction = count / total) -> 
+  cutadapt.distribution.df.2
+
+
+  
+  
+cutadapt.distribution.df.2 %>%
+group_by(strain,mix,tissue) %>%
+  summarise(total = sum(count)) %>%
+  ungroup() %>%
+  inner_join(cutadapt.distribution.df.2) %>%
+  mutate(fraction = count / total) -> 
+  cutadapt.distribution.df.2
+
+cutadapt.distribution.df.2 %>%
+  mutate(type = "homokaryon") %>%
+  mutate(type = replace(type, grepl(pattern = "R",mix),"heterokaryon")) %>%
+  mutate(type = factor(type, levels = typeLevels))->
+  cutadapt.distribution.df.2
+
+cutadapt.distribution.df.2 %>% 
+  mutate(tissue = factor(tissue,levels = tissueLevels )) %>%
+  mutate(strain = factor(strain,levels =  strainLeveles )) %>%
+  mutate(mix = factor(mix,levels = mixLevels)) ->
+  cutadapt.distribution.df.2
+  
+  
+
+
+
+cutadapt.distribution.df.2 %>% ggplot(aes( x = length, y = fraction, fill = type))+geom_col(position = position_dodge())+ 
+  facet_grid(cols = vars(strain),rows = vars(tissue)) + xlim(c(15,45))+ scale_fill_manual(values = typeColor)
+ggsave("~/Box/NeurosporaMethylation/presentation/sRNA.distribution.2.png", width = 12, height = 6)
+
+
+cutadapt.distribution.df.2 %>% ggplot(aes( x = length, y = fraction, fill = mix))+geom_col(position = position_dodge())+ 
+  facet_grid(cols = vars(strain),rows = vars(tissue)) + xlim(c(15,45)) + scale_fill_manual(values = mixColors)
+ggsave("~/Box/NeurosporaMethylation/presentation/sRNA distribution.pdf", width = 12, height = 6)
+
+
+cutadapt.distribution.df.2 %>% ggplot(aes( x = length, y = fraction, fill = mix))+geom_col(position = position_dodge())+ 
+  facet_grid(cols = vars(strain),rows = vars(tissue)) + xlim(c(30,45)) + scale_fill_manual(values = mixColors)
+
+
+ggsave("~/Box/NeurosporaMethylation/presentation/sRNA distribution.pdf", width = 10, height = 6)
+
+
+cutadapt.distribution.df.2 %>% ggplot(aes( x = length, y = fraction, fill = type))+geom_col(position = position_dodge())+ 
+  facet_grid(cols = vars(strain),rows = vars(tissue)) + xlim(c(30,45)) + scale_fill_manual(values = typeColor)
+
+ggsave("~/Box/NeurosporaMethylation/presentation/sRNA distribution.pdf", width = 10, height = 6)
+
+
+```
+
+
+## Bowtie
+
+
+
+#### Sbatch for reference building
+
+```{bash }
+#!/bin/bash -l
+#SBATCH -A snic2022-22-1096
+#SBATCH -p core
+#SBATCH -n 4
+#SBATCH -J bowtie_build
+#SBATCH -t 24:00:00
+#SBATCH --error=reports/R-%x.%j.out.StdErr
+#SBATCH --output=reports/R-%x.%j.out.StdOut
+
+
+
+#references = tetraGenomes.txt
+#referencePath = "/proj/sllstore2017101/nobackup/b2016278/private/Neurospora/references/tetra"
+
+module load bioinfo-tools 
+module load bowtie
+
+
+cd /proj/sllstore2017101/nobackup/b2016278/private/Neurospora/sRNA/references/tetra
+
+bowtie-build --threads 4  ./L1/Neurospora.tetrasperma.Illumina.sorted.9034.fa		./L1/Neurospora.tetrasperma.Illumina.sorted.9034
+bowtie-build --threads 4  ./L1/Neurospora.tetrasperma.Illumina.sorted.9033.fa		./L1/Neurospora.tetrasperma.Illumina.sorted.9033
+bowtie-build --threads 4 ./L1/L1.combinedgenome.fa ./L1/L1.combinedgenome
+
+
+bowtie-build --threads 4 ./L6/Neurospora_tetrasperma_fgsc_2508.v2.0.dna.toplevel.fa ./L6/Neurospora_tetrasperma_fgsc_2508
+bowtie-build --threads 4 ./L6/Neurospora_tetrasperma_fgsc_2509.v1.0.dna.toplevel.fa ./L6/Neurospora_tetrasperma_fgsc_2509	
+bowtie-build --threads 4 ./L6/L6.combinedgenome.fa ./L6/L6.combinedgenome	
+	
+bowtie-build --threads 4 ./L10/FGSC10708_L10a_sorted_ordered.fa ./L10/FGSC10708_L10a
+bowtie-build --threads 4 ./L10/FGSC10707_L10A_sorted_ordered.fa ./L10/FGSC10707_L10A
+bowtie-build --threads 4 ./L10/L10.combinedgenome.fa ./L10/L10.combinedgenome
+```
+
+
+
+### references in a data frame
+```{r }
+
+references = data.frame( path = c("L1/Neurospora.tetrasperma.Illumina.sorted.9034",
+                                 "./L1/Neurospora.tetrasperma.Illumina.sorted.9033",
+                                 "./L1/L1.combinedgenome",
+                                 "L6/Neurospora_tetrasperma_fgsc_2508",
+                                 "L6/Neurospora_tetrasperma_fgsc_2509",
+                                 "L6/L6.combinedgenome",
+                                 "L10/FGSC10708_L10a",
+                                 "L10/FGSC10707_L10A",
+                                 "L10/L10.combinedgenome"),
+                        strain = c("L1","L1","L1","L6","L6","L6","L10","L10","L10") ,
+                        version = c("a","A","both","A","a","both","a","A","both"))
+
+
+      
+```
+
+#### Sbatch for mapping
+
+```{r}
+
+
+
+bowtieCommands.cutadapt = list()
+
+strains = unique(sampleInfo$strain)
+for(strain_1 in strains){
+  reference = references %>%
+    filter(strain  == strain_1)  %>%
+    filter(version == "both")
+  
+  bowtiePath = paste("references/tetra",reference$path, sep = "/")
+  sample_strain = sampleInfo %>% filter(strain == strain_1)
+  strain = sampleInfo$strain[i]
+  for(sample in sample_strain$sample){
+    # remove adapter
+    #  bowtie -q -v 0 -k 10 -S -t -p 4 <index.name> <small_rna.fastq> <out.sam>
+    bowtie =   paste("bowtie -q -v 0 -k 10 -S -t -p 4 ",bowtiePath,
+                     " ",fastq.cutadapt,"/",sample,".cutadapt.fastq.gz ",
+                     bamDir,"/",sample,".sam >" ,
+                     bamDir,"/",sample,".summary 2>&1", sep = "")
+    bowtieCommands.cutadapt[[sample]] = bowtie
+  }
+}
+
+
+bowtieCommands.cutadapt
+```
+
+```{r}
+
+
+sbatchFile = "../../../sbatchScripts/sRNA.tetra.bowtie.sbatch"
+write(x = "#!/bin/bash -l", file =sbatchFile, append = FALSE) 
+write("#SBATCH -A snic2022-22-1096", file =sbatchFile, append = TRUE)
+write("#SBATCH -p core", file =sbatchFile, append = TRUE)
+write("#SBATCH -n 4", file =sbatchFile, append = TRUE)
+write("#SBATCH -J bowtie", file =sbatchFile, append = TRUE)
+write("#SBATCH -t 24:00:00", file =sbatchFile, append = TRUE)
+write("#SBATCH --error=reports/R-%x.%j.out.StdErr", file =sbatchFile, append = TRUE)
+write("#SBATCH --output=reports/R-%x.%j.out.StdOut", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("# Load modules", file =sbatchFile, append = TRUE)
+write("module load bioinfo-tools", file =sbatchFile, append = TRUE)
+write("module load bowtie", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("# Go to correct directory", file =sbatchFile, append = TRUE)
+write(paste ("cd",projDir), file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("# Run cutadapt on files", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+
+
+for(sample in sampleInfo$sample){
+  write(bowtieCommands.cutadapt[[sample]], file =sbatchFile, append = TRUE)
+}
+
+
+
+
+
+```
+
+
+### Samfiles
+```{r}
+read_sam <- function(fileName,sample){
+  samFileList = list()
+  
+  samFile = read_tsv(fileName,
+                     comment = "@", col_names =FALSE ) %>% select(1:11)
+  
+  
+  colnm = c("readName", "FLAG", "contig","pos","MAPQ","CIGAR","RNEXT",
+            "PNEXT","TLEN","read","QUAL")
+  
+  
+  colnames(samFile) = colnm
+  
+  samFile %>% filter(FLAG != 4) -> 
+    samFile.mapped
+  samFile.mapped %>% mutate(readLength = as.numeric(gsub("M","",CIGAR))) %>%
+    select(readName,read,readLength,contig,pos,FLAG) -> samFile.mapped
+  
+samFile.mapped  
+  
+  samFile.mapped %>% distinct(readName,readLength) %>%
+    group_by(readLength) %>%
+    summarise(nrOfReads = n()) ->
+    samFile.mapped.summary
+  
+  
+  samFile.mapped %>% group_by(readName,readLength) %>%
+    summarise(nrOfHits = n(), NEUTE2 = sum(grepl("NEUTE2",contig))) ->
+    samFile.mapped.read.summary
+  
+  
+  
+  samFile.mapped.read.summary %>% filter(nrOfHits < 7) ->
+    samFile.mapped.read.summary.QC
+  
+  samFile.mapped.summary %>% filter(readLength >17 &  readLength < 29 ) -> samFile.mapped.summary.QC
+  
+  inner_join(samFile.mapped,samFile.mapped.read.summary.QC) %>%
+    inner_join(samFile.mapped.summary.QC) ->
+    samFile.mapped.QC
+  
+  samFileList[["samFile"]] = samFile.mapped.QC
+  samFileList[["readSummary"]] = samFile.mapped.read.summary
+  samFileList[["mappedSummary"]] = samFile.mapped.summary
+  samFileList[["file"]] = fileName
+  samFileList[["sample"]] = sample
+  
+  
+  
+  return(samFileList)
+}
+
+
+
+```
+#### a
+```{r}
+
+
+fileName = "~/storage/NeurosporaMethylation/bams/tetra/L6/L6aP3-sex.sam" 
+samFile.a <- read_sam(fileName,"L6aP3-sex" )
+
+samFile.a[["mappedSummary"]] %>%
+  ggplot(aes( x = as.factor(readLength), y = nrOfReads))+
+  geom_col(position = position_dodge())
+ggsave("~/Box/NeurosporaMethylation/presentation/a.readDistribution.pdf")
+
+samFile.a[["readSummary"]] %>%
+  ggplot(aes(x = nrOfHits)) +
+  geom_bar() +
+  facet_wrap(.~readLength)
+ggsave("~/Box/NeurosporaMethylation/presentation/a.nrOfHits.pdf", width = 8, height = 10)
+
+require(ggseqlogo)
+
+logos = list()
+for( i in 18:28){
+samFile.a[["samFile"]] %>% filter(FLAG == 0) %>%
+  filter(readLength == i) %>%
+  distinct(read) -> 
+  test
+ logo  = ggseqlogo(data = test)+ ggtitle(as.character(i))+ theme(axis.text.x=element_text(angle = -90, hjust = 0))
+  logos[[as.character(i)]] = logo
+}
+
+wrap_plots(logos)
+ggsave("~/Box/NeurosporaMethylation/presentation/a.logos.pdf", width = 15, height = 15)
+
+
+
+samFile.a[["samFile"]] %>% 
+  distinct(readName,readLength,nrOfHits,NEUTE2) %>%
+  mutate(fraction = NEUTE2 / nrOfHits  ) %>%
+  ggplot(aes(x = as.factor(readLength),y = fraction)) + 
+  geom_violin()
+
+ggsave("~/Box/NeurosporaMethylation/presentation/a.violin.pdf")
+
+  
+
+```
+
+#### A
+```{r}
+
+fileName = "~/storage/NeurosporaMethylation/bams/tetra/L6/L6aaP1-sex.sam" 
+samFile.A <- read_sam(fileName,"L6aaP1-sex" )
+
+samFile.A[["mappedSummary"]] %>%
+  ggplot(aes( x = as.factor(readLength), y = nrOfReads))+
+  geom_col(position = position_dodge())
+ggsave("~/Box/NeurosporaMethylation/presentation/A.readDistribution.pdf")
+
+
+samFile.A[["readSummary"]] %>%
+  ggplot(aes(x = nrOfHits)) +
+  geom_bar() +
+  facet_wrap(.~readLength)
+ggsave("~/Box/NeurosporaMethylation/presentation/A.mapDistribution.pdf")
+
+
+require(ggseqlogo)
+logos = list()
+for( i in 18:28){
+samFile.A[["samFile"]] %>% filter(FLAG == 0) %>%
+  filter(readLength == i) %>%
+  distinct(read) -> 
+  test
+ logo  = ggseqlogo(data = test)+ ggtitle(as.character(i))+ theme(axis.text.x=element_text(angle = -90, hjust = 0))
+  logos[[as.character(i)]] = logo
+}
+
+wrap_plots(logos)
+ggsave("~/Box/NeurosporaMethylation/presentation/A.logos.pdf")
+
+
+samFile.A[["samFile"]] %>% 
+  distinct(readName,readLength,nrOfHits,NEUTE2) %>%
+  mutate(fraction = NEUTE2 / nrOfHits  ) %>%
+  ggplot(aes(x = as.factor(readLength),y = fraction)) + 
+  geom_violin()
+ggsave("~/Box/NeurosporaMethylation/presentation/A.fraction.pdf")
+
+  
+
+```
+#### R3
+```{r}
+
+fileName = "~/storage/NeurosporaMethylation/bams/tetra/L6/L6R3P2-sex.sam" 
+samFile.R3 <- read_sam(fileName,"L6_R3" )
+
+samFile.R3[["mappedSummary"]] %>%
+  ggplot(aes( x = as.factor(readLength), y = nrOfReads))+
+  geom_col(position = position_dodge())
+
+ggsave("~/Box/NeurosporaMethylation/presentation/R3.readDistribution.pdf")
+
+
+samFile.R3[["readSummary"]] %>%
+  ggplot(aes(x = nrOfHits)) +
+  geom_bar() +
+  facet_wrap(.~readLength)
+ggsave("~/Box/NeurosporaMethylation/presentation/R3.mapDistribution.pdf", width = 8, height = 10)
+
+
+require(ggseqlogo)
+logos = list()
+for( i in 18:28){
+samFile.R3[["samFile"]] %>% filter(FLAG == 0) %>%
+  filter(readLength == i) %>%
+  distinct(read) -> 
+  test
+ logo  = ggseqlogo(data = test)+ ggtitle(as.character(i))+ theme(axis.text.x=element_text(angle = -90, hjust = 0))
+  logos[[as.character(i)]] = logo
+}
+
+wrap_plots(logos)
+ggsave("~/Box/NeurosporaMethylation/presentation/R3.logos.pdf",, width = 15, height = 15)
+
+
+samFile.R3[["samFile"]] %>% 
+  distinct(readName,readLength,nrOfHits,NEUTE2) %>%
+  mutate(fraction = NEUTE2 / nrOfHits  ) %>%
+  ggplot(aes(x = as.factor(readLength),y = fraction)) + 
+  geom_violin()
+ggsave("~/Box/NeurosporaMethylation/presentation/R3.fraction.pdf")
+
+
+
+  
+
+
+samFile.R3[["samFile"]]  %>% 
+  filter(readLength %in% c(21:22)) %>% mutate(class= "21nt") ->
+  R3.short
+  
+samFile.R3[["samFile"]]  %>% 
+  filter(readLength %in% c(25:26)) %>% mutate(class= "25nt") ->
+  R3.long
+
+
+R3.25 = bind_rows(R3.short, R3.long)
+
+
+R3.25 %>%
+  group_by(contig) %>%
+  dplyr::summarise(max = max(pos)) %>% filter(max > 30000) -> contigs
+
+
+contigs %>% arrange(-max)  %>%
+  mutate(contigNew = gsub("NEUTE2scaffold_1","MATa_chr1", contig)) %>%
+  mutate(contigNew = gsub("NEUTE2scaffold_2","MATa_chr2", contigNew)) %>%
+  mutate(contigNew = gsub("NEUTE2scaffold_3","MATa_chr3", contigNew)) %>%
+  mutate(contigNew = gsub("NEUTE2scaffold_4","MATa_chr4", contigNew)) %>%
+  mutate(contigNew = gsub("NEUTE2scaffold_5","MATa_chr5", contigNew)) %>%
+  mutate(contigNew = gsub("NEUTE2scaffold_6","MATa_chr6", contigNew)) %>%
+  mutate(contigNew = gsub("NEUTE2scaffold_7","MATa_chr7", contigNew)) %>%
+  mutate(contigNew = gsub("NEUTE2scaffold_8","MATa_chr8", contigNew)) %>%
+  mutate(contigNew = gsub("NEUTE1scaffold_81","MATA_chr1", contigNew)) %>%
+  mutate(contigNew = gsub("NEUTE1scaffold_1","MATA_chr2", contigNew)) %>%
+  mutate(contigNew = gsub("NEUTE1scaffold_2","MATA_chr3", contigNew)) %>%
+  mutate(contigNew = gsub("NEUTE1scaffold_3","MATA_chr4", contigNew)) %>%
+  mutate(contigNew = gsub("NEUTE1scaffold_4","MATA_chr5", contigNew)) %>%
+  mutate(contigNew = gsub("NEUTE1scaffold_5","MATA_chr6", contigNew)) %>%
+  mutate(contigNew = gsub("NEUTE1scaffold_6","MATA_chr7", contigNew)) %>%
+  separate(contigNew, into = c("MAT","chr"), sep = "_", remove = FALSE) -> 
+  contigs
+
+
+R3.25 %>%
+  group_by(contig,pos,class,FLAG) %>%
+  dplyr::summarise(nrOfReads = n()) %>%
+  mutate(direction = 1) %>%
+  mutate(direction = replace(direction, FLAG!= 0, -1)) %>%
+  mutate(nrOfReads = nrOfReads*direction) %>%
+  arrange(contig,pos) %>%
+  inner_join(contigs) ->
+  data 
+
+data %>%
+  ggplot(aes(y = nrOfReads, x = pos, col = class) ) +
+  geom_point(size = 0.3) +
+  facet_grid(chr~MAT) + ylim(c(-1000,1000))
+
+
+
+  scale_y_continuous(trans='log2')
+ggsave("~/Box/NeurosporaMethylation/presentation/L6_sex_sRNA_distribution.pdf", width = 15, height = 10)
+
+
+
+  
+
+
+
+```
+
+#### R1
+```{r}
+
+fileName = "~/storage/NeurosporaMethylation/bams/tetra/L6/L6R1P1-sex.sam" 
+samFile.R1 <- read_sam(fileName,"L6_R1" )
+
+samFile.R1[["mappedSummary"]] %>%
+  ggplot(aes( x = as.factor(readLength), y = nrOfReads))+
+  geom_col(position = position_dodge())
+
+samFile.R1[["readSummary"]] %>%
+  ggplot(aes(x = nrOfHits)) +
+  geom_bar() +
+  facet_wrap(.~readLength)
+require(ggseqlogo)
+logos = list()
+for( i in 18:28){
+samFile.R1[["samFile"]] %>% filter(FLAG == 0) %>%
+  filter(readLength == i) %>%
+  distinct(read) -> 
+  test
+ logo  = ggseqlogo(data = test)+ ggtitle(as.character(i))+ theme(axis.text.x=element_text(angle = -90, hjust = 0))
+  logos[[as.character(i)]] = logo
+}
+
+wrap_plots(logos)
+
+
+samFile.R1[["samFile"]] %>% 
+  distinct(readName,readLength,nrOfHits,NEUTE2) %>%
+  mutate(fraction = NEUTE2 / nrOfHits  ) %>%
+  ggplot(aes(x = as.factor(readLength),y = fraction)) + 
+  geom_violin()
+  
+
+
+samFile.R1[["samFile"]] 
+
+```
+
+
+
+## featureCounts
+
+
+#### gff files
+```{r }
+gffInfo = data.frame(gffPath = c(
+  "./L1/9034.maker-models.functional.all.withOrthoID.corrected.gff",
+  "./L1/9033.maker-models.functional.all.withOrthoID.corrected.gff",
+  "./L1/CombinedGff_9033_9034_WithOrthoID.all.corr.gff",
+  "./L6/2508.all.withOrthoID.corr.gff",
+  "./L6/2509.all.withOrthoID.gff",
+  "./L6/combined2508_2509.all.withOrthoID.gff",
+  "./L10/10708.maker-models.functionalWithMat_a.all.withOrthoID.corr.gff",
+  "./L10/10707.maker-models.functional.all.withOrthoID.corrected.gff",
+  "./L10/CombinedGff_10707_10708_WithOrthoID.all.corr.gff"),
+  strain = c("L1","L1","L1","L6","L6","L6","L10","L10","L10") ,
+  version = c("a","A","both","A","a","both","a","A","both"))
+
+
+
+
+
+```
+
+
+
+```{r }
+featureCountCommand  = list()
+
+strains = unique(sampleInfo$strain)
+for(strain_1 in strains){
+  gff = gffInfo %>%
+    filter(strain  == strain_1)  %>%
+    filter(version == "both")
+  
+  gffPath = paste("references/tetra",gff$gffPath, sep = "/")
+  featureCount =   paste("featureCounts -t exon -g Parent -O -M -a ",gffPath,
+                         " -o counts/tetra/",strain_1,"/",strain_1,".featureCounts.tsv bams/tetra/",strain_1,"/*.sam", sep = "")
+  featureCountCommand[[strain_1]] = featureCount
+}
+
+featureCountCommand
+
+
+
+
+```
+```{r}
+sbatchFile = "../../../sbatchScripts/sRNA.tetra.featureCount.sbatch"
+write(x = "#!/bin/bash -l", file =sbatchFile, append = FALSE) 
+write("#SBATCH -A snic2022-22-1096", file =sbatchFile, append = TRUE)
+write("#SBATCH -p core", file =sbatchFile, append = TRUE)
+write("#SBATCH -n 4", file =sbatchFile, append = TRUE)
+write("#SBATCH -J featureCounts", file =sbatchFile, append = TRUE)
+write("#SBATCH -t 2:00:00", file =sbatchFile, append = TRUE)
+write("#SBATCH --error=reports/R-%x.%j.out.StdErr", file =sbatchFile, append = TRUE)
+write("#SBATCH --output=reports/R-%x.%j.out.StdOut", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("# Load modules", file =sbatchFile, append = TRUE)
+write("module load bioinfo-tools", file =sbatchFile, append = TRUE)
+write("module load subread", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("# Go to correct directory", file =sbatchFile, append = TRUE)
+write(paste ("cd",projDir), file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("# Run featureCount on files", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+write("", file =sbatchFile, append = TRUE)
+
+for(strain in names(featureCountCommand)){
+  write(featureCountCommand[[strain]], file =sbatchFile, append = TRUE)
+}
+```
+
+
+```{r }
+
+counts = read_tsv(file = "data/RNA/sRNA/crassa.featureCounts.tsv", skip = 1)
+
+geneinfo = counts[1:6]
+
+readinfo = counts[-1:-6]
+readinfo$tx_id = geneinfo[[1]]
+
+readinfo %>% pivot_longer(-tx_id, names_to = "Sample", values_to = "Counts" ) %>%
+  mutate(Sample = gsub(pattern = "bams/crassa/", "",x = Sample)) %>%
+  mutate(Sample = gsub(pattern = ".sam", "",x = Sample)) ->readinfo
+
+  
+
+
+readinfo %>% group_by(Sample) %>%
+  summarise(mappedReads = sum(Counts)) -> 
+  readinfo.summary
+
+readinfo.summary %>% filter(mappedReads >1000000) ->
+  readinfo.summary.qc
+
+readinfo %>% filter(Sample %in% readinfo.summary.qc$Sample) ->
+readinfo.qc  
+
+exp.data = readinfo.qc %>%
+  pivot_wider(values_from = "Counts", names_from = "Sample") %>%
+  column_to_rownames("tx_id")
+
+
+exp.data <- exp.data + 1
+
+#BiocManager::install("edgeR")
+library(edgeR)
+
+lib.size <- apply(exp.data,2,sum)
+scale.factors <- calcNormFactors(exp.data, method="TMM") 
+
+norm.data <- t(t(exp.data)/(scale.factors*lib.size))
+
+norm.data = norm.data*1000000
+
+norm.data <- log2(norm.data)
+
+sample.pca <- prcomp(t(norm.data))     ## compute principal components
+sample.pca$x %>% as.data.frame() %>% rownames_to_column("Sample") %>%
+  pivot_longer(cols = -Sample, names_to = "PC",values_to = "value") ->
+  sample.pca.long
+
+sample.pca$x %>% as.data.frame()%>%
+  rownames_to_column("Sample") %>%
+  ggplot(aes(x = PC1,y = PC2,label = Sample )) +
+  geom_point() + 
+  ggrepel::geom_label_repel()
+```
+
+# ERI1 analysis
+```{r }
+
+
+norm.data %>%  as.data.frame() %>%
+  rownames_to_column ("tx_id")  %>%
+ pivot_longer(-tx_id, names_to = "Sample", values_to = "logN" ) ->
+  norm.data.long
+
+
+norm.data.long %>% filter(grepl("SRR444", Sample)) %>%
+  mutate(Sample = gsub("SRR4448063","ERI1",Sample)) %>%
+  mutate(Sample = gsub("SRR4448064","wt",Sample)) ->
+  ERI1.norm.long
+
+
+ERI1.norm.long %>%  pivot_wider(names_from = "Sample",values_from = "logN") %>%
+  mutate(difference = ERI1 - wt) -> ERI1.norm.wide
+  
+
+ERI1.norm %>% ggplot(aes(x = difference)) + geom_density()
+
+ERI1.norm.long %>% ggplot(aes(x = logN, color = Sample)) + geom_density()
+
+
+ERI1.norm.long %>% 
+  filter(logN >5) %>%
+  distinct(tx_id) ->
+  ERI1.norm.high
+
+ERI1.norm %>% filter(abs(difference) > 2) %>%
+  filter(tx_id %in% ERI1.norm.high$tx_id) %>%
+  arrange(-abs(difference)) -> 
+  ERI1.norm.diff
+ERI1.norm.diff
+
+
+
+
+```
+
+
+```{r} 
+
+read_tsv("annotation/genomeAnnotations/Neurospora_crassa.methylated.conserved.genes.tsv") ->
+  methylated.conserved.genes
+
+
+methylated.conserved.genes
+
+ERI1.norm.long %>% 
+  mutate(tx_id2 = gsub("transcript:","", tx_id)) %>%
+  separate(tx_id2, into =c("tx_id3","else"), sep = "-") ->
+  ERI1.norm.long
+
+ERI1.norm %>% inner_join(methylated.conserved.genes)
+
+read_tsv("annotation/genomeAnnotations/Neurospora_crassa.NC12.gff", comment = "#", col_names = FALSE) %>%
+  filter(X3 == "mRNA") %>%
+  select(X9) %>%
+  separate(X9,into = c("ID", "parent" ),sep = ";" ) %>%
+  mutate(tx_id3 = gsub("ID=transcript:","",ID)) %>%
+  mutate(gene_id = gsub("Parent=gene:","",parent)) %>%
+  select(gene_id,tx_id3) %>%
+  inner_join(ERI1.norm.long) -> 
+  ERI1.norm.long
+
+
+ERI1.norm.long %>% left_join(methylated.conserved.genes) %>%
+  mutate(conserved = "yes") %>%
+  mutate(conserved = replace(conserved, is.na(both),"no")) ->
+  ERI1.norm.long.methylated
+
+ERI1.norm.long.methylated %>% ggplot(aes(x = logN, color = conserved)) + geom_density() + facet_wrap("Sample")
+
+
+ERI1.norm.long.methylated %>%
+  select(gene_id, Sample,logN,conserved ) %>%
+  group_by(gene_id,Sample) %>%
+  slice_head(n = 1) %>%
+  ungroup() %>%
+  pivot_wider(names_from = Sample, values_from = logN  ) %>%
+  mutate(difference = ERI1 - wt) -> ERI1.norm.wide.methylated
+  
+
+ERI1.norm.wide.methylated %>% ggplot(aes(x = difference, color =conserved )) + geom_density()
+
+
+
+ERI1.norm.wide.methylated %>% 
+  filter(conserved == "yes") %>%
+  arrange(-abs(difference))
+
+
+```
+
+
+
+## ERI-1
+
+Controll t
+```{r }
+
+
+
+```
+
+
+## Wt Tetra crassa sRNA analysis
+
+Kontrollera om sRNA är mer konserverade än vad man   
+```{r}
+
+
+```
+
+## Read quality
+```{r   }
+
+
+```
+
+
+## Cross association
+
+## Compare histone marks with methylation 
+
+
+
